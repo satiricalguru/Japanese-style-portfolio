@@ -22,7 +22,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           onClick={onClose}
-          className="fixed inset-0 bg-ink-black/60 backdrop-blur-sm"
+          className="fixed inset-0 bg-ink-black/70 backdrop-blur-sm"
         />
 
         {/* Modal Window Dossier */}
@@ -33,35 +33,51 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           className="relative max-w-3xl w-full bg-parchment-light rounded-3xl border border-ink-deep/20 shadow-2xl p-6 sm:p-10 my-8 z-10 notebook-grid overflow-hidden text-ink-deep"
         >
-          {/* Top Paper Header Bar */}
-          <div className="flex items-center justify-between pb-4 border-b border-ink-deep/10">
-            <div className="flex items-center gap-3">
-              <span className="font-mono text-xs font-bold text-paint-orange tracking-widest bg-paint-orange/10 px-2.5 py-1 rounded-md">
-                PROJECT {project.number}
+          {/* Master Artwork Header Banner */}
+          <div className="relative h-44 sm:h-52 -mx-6 sm:-mx-10 -mt-6 sm:-mt-10 overflow-hidden border-b border-ink-deep/20 mb-6 group">
+            <img
+              src={`/assets/art/${project.id}.jpg`}
+              alt={project.title}
+              className="w-full h-full object-cover object-center filter saturate-[1.1] contrast-[1.05]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-parchment-light via-ink-black/35 to-ink-black/60" />
+
+            {/* Modal Top Bar on Image */}
+            <div className="absolute top-4 left-4 right-4 sm:top-6 sm:left-6 sm:right-6 flex items-center justify-between z-10">
+              <span className="font-mono text-xs font-bold text-amber-300 bg-black/60 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md">
+                PROJECT {project.number} // ARCHIVE DOSSIER
               </span>
-              <span className="font-mono text-xs text-ink-muted">{project.annotation}</span>
+
+              <button
+                onClick={onClose}
+                className="w-8 h-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/90 transition-colors backdrop-blur-md"
+                aria-label="Close dossier"
+              >
+                <X className="w-4 h-4" />
+              </button>
             </div>
 
-            <button
-              onClick={onClose}
-              className="w-8 h-8 rounded-full border border-ink-deep/20 flex items-center justify-center text-ink-muted hover:text-ink-black hover:bg-black/5 transition-colors"
-              aria-label="Close dossier"
-            >
-              <X className="w-4 h-4" />
-            </button>
-          </div>
-
-          {/* Title & Tagline */}
-          <div className="pt-6 space-y-2">
-            <div className="flex flex-wrap items-center justify-between gap-3">
-              <h2 className="font-serif text-3xl sm:text-4xl text-ink-black">{project.title}</h2>
-              <span className="text-xs font-mono text-ink-faint px-3 py-1 rounded-full border border-ink-deep/15 bg-parchment-base">
+            {/* Bottom Title on Image */}
+            <div className="absolute bottom-3 left-4 right-4 sm:left-8 sm:right-8 flex items-end justify-between z-10">
+              <div>
+                <span className="font-mono text-[10px] text-amber-300 uppercase tracking-widest block font-bold">
+                  {project.category}
+                </span>
+                <h2 className="font-serif text-2xl sm:text-3xl text-white font-medium drop-shadow-sm">
+                  {project.title}
+                </h2>
+              </div>
+              <span className="text-xs font-mono text-white/90 px-2.5 py-0.5 rounded-full border border-white/20 bg-black/40 backdrop-blur-md">
                 {project.status}
               </span>
             </div>
+          </div>
+
+          {/* Subtitle & Classification */}
+          <div className="space-y-1 pb-4 border-b border-ink-deep/10">
             <p className="text-base text-paint-orange font-mono font-medium">{project.tagline}</p>
             <div className="text-xs font-mono text-ink-faint flex items-center gap-2">
-              <TechBracket text={project.category} />
+              <TechBracket text={project.annotation} />
             </div>
           </div>
 
