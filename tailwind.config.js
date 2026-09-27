@@ -11,7 +11,7 @@ export default {
           light: '#FAF8F3',
           base: '#F5F1E8',
           card: '#EDE6D8',
-          dark: '#E4DCB',
+          dark: '#E4DCCB',
           aged: '#DDD3BF',
         },
         ink: {
@@ -31,9 +31,8 @@ export default {
         }
       },
       fontFamily: {
-        serif: ['"Instrument Serif"', '"Fraunces"', 'Georgia', 'serif'],
+        serif: ['"Instrument Serif"', 'Georgia', 'serif'],
         sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
-        hand: ['"Caveat"', '"Reenie Beanie"', 'cursive'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       boxShadow: {

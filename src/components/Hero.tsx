@@ -1,74 +1,75 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { TechBracket, HandStar } from './Doodles';
 import { ArrowDown, Terminal, Cpu, Radio, Shield, Layers } from 'lucide-react';
+import { getGitHubStats } from '../data/projects';
 
 export const Hero: React.FC = () => {
-  const [activeNode, setActiveNode] = useState<string | null>(null);
+  const [activeNode, setActiveNode] = useState<string | null>('local-ai');
+  const stats = getGitHubStats();
 
   const nodes = [
     {
       id: 'local-ai',
       label: 'Local LLMs',
-      sub: 'Forge · 0 Telemetry',
+      sub: 'Forge · Localhost',
       x: '18%',
       y: '22%',
       color: '#C85A32',
       icon: Terminal,
-      detail: 'Ollama & llama.cpp context routing in local VS Code fork'
+      detail: 'Ollama & llama.cpp context routing in an air-gapped VS Code build'
     },
     {
       id: 'audio-dsp',
       label: 'Audio DSP',
-      sub: 'Beatrice · 10ms',
+      sub: 'Beatrice · Low Latency',
       x: '75%',
       y: '18%',
       color: '#2D5D44',
       icon: Radio,
-      detail: 'Real-time neural voice conversion & VST3 sound pipelines'
+      detail: 'Real-time neural voice conversion & CoreAudio frame buffer pipelines'
     },
     {
       id: 'macos-native',
       label: 'Native macOS',
-      sub: 'Vantage · Desktop Hooks',
+      sub: 'Vantage · AppKit',
       x: '80%',
       y: '72%',
       color: '#2B5898',
       icon: Layers,
-      detail: 'kCGDesktopWindowLevel streaming 4K wallpaper engine'
+      detail: 'kCGDesktopWindowLevel streaming video wallpaper engine'
     },
     {
       id: 'agents',
-      label: 'Autonomous Agents',
-      sub: 'Wraith · 11-Signal Parity',
+      label: 'Binary Analysis',
+      sub: 'Wraith · Ghidra',
       x: '15%',
       y: '78%',
       color: '#8E3345',
       icon: Cpu,
-      detail: 'Objective verification & Ghidra decompilation loops'
+      detail: 'Headless Ghidra decompilation loops and LLM code auditing'
     },
     {
       id: 'security',
-      label: 'Forensic Privacy',
-      sub: 'SynthID Stripper',
+      label: 'Signal Forensics',
+      sub: 'SynthID Remover',
       x: '48%',
       y: '88%',
       color: '#C98A2C',
       icon: Shield,
-      detail: 'Client-side 2D DCT frequency watermark scrubber'
+      detail: '2D Discrete Cosine Transform frequency watermark attenuation'
     },
   ];
 
   return (
-    <section id="hero" className="relative min-h-[92vh] pt-28 pb-16 flex items-center justify-center overflow-hidden">
+    <section id="hero" className="relative min-h-[90vh] pt-28 pb-16 flex items-center justify-center overflow-hidden">
       {/* Background Watercolor Washes */}
       <div className="absolute top-1/4 left-1/12 w-96 h-96 bg-paint-orange/10 watercolor-wash" />
       <div className="absolute top-1/3 right-1/10 w-[30rem] h-[30rem] bg-paint-blue/10 watercolor-wash" />
       <div className="absolute bottom-1/12 left-1/3 w-80 h-80 bg-paint-green/8 watercolor-wash" />
 
       {/* Subtle Engineer Sheet Margin Reference */}
-      <div className="absolute top-28 left-6 md:left-12 font-mono text-[10px] text-ink-faint/60 select-none tracking-widest hidden sm:block">
-        [DOC_REF: JP-2026-ENG-001] · LAT: 28.6139° N · LON: 77.2090° E
+      <div className="absolute top-28 left-6 md:left-12 font-mono text-[10px] text-ink-faint select-none tracking-wider hidden sm:block">
+        [BUILD: 2026] · LOCAL-FIRST SYSTEMS & CREATIVE CODE
       </div>
 
       <div className="max-w-7xl w-full mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center relative z-10">
@@ -76,25 +77,19 @@ export const Hero: React.FC = () => {
         {/* Left Editorial Narrative Column */}
         <div className="lg:col-span-7 flex flex-col items-start space-y-6">
           
-          {/* Handwritten Annotation Callout */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-center gap-2"
-          >
-            <span className="font-hand text-xl md:text-2xl text-paint-orange rotate-[-2deg] font-semibold tracking-wide">
-              notebook of an independent systems & ai engineer
+          {/* Eyebrow Callout */}
+          <div className="flex items-center gap-2">
+            <span className="font-mono text-xs uppercase tracking-widest text-paint-orange font-bold">
+              SYSTEMS ARCHITECTURE & EXPERIMENTAL SOFTWARE
             </span>
-            <HandStar className="w-5 h-5 text-paint-ochre animate-pulse" />
-          </motion.div>
+          </div>
 
           {/* Large Editorial Headline */}
           <motion.h1
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5.25rem] text-ink-black font-normal leading-[1.04] tracking-tight"
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-[5rem] text-ink-black font-normal leading-[1.05] tracking-tight"
           >
             I turn strange ideas into{' '}
             <span className="relative inline-block italic font-serif">
@@ -105,22 +100,12 @@ export const Hero: React.FC = () => {
           </motion.h1>
 
           {/* Research-Derived Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25 }}
-            className="text-base sm:text-lg text-ink-muted max-w-xl font-normal leading-relaxed"
-          >
-            Designing high-performance native macOS engines, local-first AI IDEs, real-time 10ms DSP audio pipelines, and autonomous binary analysis agents — built with uncompromising privacy and zero cloud telemetry.
-          </motion.p>
+          <p className="text-base sm:text-lg text-ink-muted max-w-xl font-normal leading-relaxed">
+            Building local-first developer tools, native macOS desktop utilities, and low-latency audio pipelines with a focus on privacy, responsiveness, and sovereign execution.
+          </p>
 
           {/* Call to Action Row */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.35 }}
-            className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono"
-          >
+          <div className="pt-2 flex flex-wrap items-center gap-4 text-xs font-mono">
             <a
               href="#works"
               className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-ink-black text-parchment-light font-medium tracking-wide shadow-sketch hover:bg-paint-orange transition-all duration-300 group"
@@ -134,45 +119,34 @@ export const Hero: React.FC = () => {
               className="inline-flex items-center gap-2 px-5 py-3.5 rounded-full border border-ink-deep/20 bg-parchment-card hover:bg-parchment-light text-ink-deep font-medium tracking-wide transition-all shadow-sm group"
             >
               <span>The Lab & Experiments</span>
-              <span className="font-hand text-sm text-paint-wine group-hover:rotate-6 transition-transform">🧪 12 items</span>
+              <span className="text-paint-wine font-medium">🧪 12 items</span>
             </a>
-          </motion.div>
+          </div>
 
-          {/* Quick Technical Coordinates Stamp */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
-            className="pt-4 flex items-center gap-4 text-ink-faint text-xs font-mono border-t border-ink-deep/10 w-full max-w-lg"
-          >
-            <TechBracket text="FOCUS: LOCAL AI · DSP · MACOS" />
+          {/* Dynamic Technical Coordinates Stamp */}
+          <div className="pt-4 flex items-center gap-4 text-ink-faint text-xs font-mono border-t border-ink-deep/10 w-full max-w-lg">
+            <span className="text-ink-deep font-medium">FOCUS: LOCAL AI · DSP · MACOS</span>
             <span className="text-ink-border">|</span>
-            <span className="font-hand text-sm text-ink-muted">145+ public stars · 49 repos</span>
-          </motion.div>
+            <span className="text-ink-muted">{stats.totalStars} public stars · {stats.totalRepos} repositories</span>
+          </div>
         </div>
 
         {/* Right Column: Hand-Drawn Engineering Schematic Diagram */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="lg:col-span-5 relative flex items-center justify-center"
-        >
+        <div className="lg:col-span-5 relative flex items-center justify-center">
           {/* Outer Sketchbook Container */}
-          <div className="relative w-full aspect-square max-w-[480px] p-6 rounded-3xl bg-parchment-card/60 border border-ink-deep/15 shadow-paper backdrop-blur-sm notebook-grid overflow-hidden group">
+          <div className="relative w-full aspect-square max-w-[480px] p-6 rounded-3xl bg-parchment-card/70 border border-ink-deep/15 shadow-paper backdrop-blur-sm notebook-grid overflow-hidden group">
             
             {/* Stamp & Technical Headers */}
             <div className="flex justify-between items-center pb-3 border-b border-ink-deep/10 text-[10px] font-mono text-ink-faint">
-              <span className="flex items-center gap-1">
-                <span className="w-2 h-2 rounded-full bg-paint-orange/80 animate-ping inline-block" />
-                SYSTEM_TOPOLOGY_v2.6
+              <span className="flex items-center gap-1.5 font-bold text-ink-deep">
+                <span className="w-2 h-2 rounded-full bg-paint-orange animate-pulse inline-block" />
+                SYSTEM MAP
               </span>
-              <span>FIGURE A.1</span>
+              <span>CLICK TO EXAMINE</span>
             </div>
 
             {/* Hand-Drawn Connecting Circuit Paths SVG */}
             <svg className="absolute inset-0 w-full h-full pointer-events-none stroke-ink-deep/25 fill-none stroke-[1.4]" strokeDasharray="3 3">
-              {/* Lines from center hub to nodes */}
               <path d="M 240 240 Q 140 160 90 120" />
               <path d="M 240 240 Q 340 150 360 100" />
               <path d="M 240 240 Q 360 300 370 330" />
@@ -180,42 +154,40 @@ export const Hero: React.FC = () => {
               <path d="M 240 240 Q 240 360 240 395" />
             </svg>
 
-            {/* Central Engineering Core / Strange Machine Hub */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center">
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-                className="w-24 h-24 rounded-full border-2 border-dashed border-paint-orange/40 flex items-center justify-center bg-parchment-light shadow-sketch"
-              >
-                <div className="w-16 h-16 rounded-full border border-ink-deep/20 bg-parchment-base flex flex-col items-center justify-center p-2 text-center">
+            {/* Central Engineering Core */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex flex-col items-center justify-center pointer-events-none">
+              <div className="w-22 h-22 rounded-full border-2 border-dashed border-paint-orange/40 flex items-center justify-center bg-parchment-light shadow-sketch">
+                <div className="w-15 h-15 rounded-full border border-ink-deep/20 bg-parchment-base flex flex-col items-center justify-center p-2 text-center">
                   <span className="font-mono text-[9px] font-bold text-ink-black tracking-widest leading-none">CORE</span>
-                  <span className="font-hand text-xs text-paint-orange font-bold leading-tight">orchestrator</span>
+                  <span className="font-mono text-[10px] text-paint-orange font-bold leading-tight mt-0.5">engine</span>
                 </div>
-              </motion.div>
+              </div>
               <span className="font-mono text-[9px] text-ink-faint mt-1 bg-parchment-light/90 px-2 py-0.5 rounded border border-ink-deep/10">
-                satiricalguru / engine
+                satiricalguru
               </span>
             </div>
 
-            {/* Interactive Domain Nodes */}
+            {/* Accessible Interactive Domain Nodes */}
             {nodes.map((node) => {
               const Icon = node.icon;
-              const isHovered = activeNode === node.id;
+              const isSelected = activeNode === node.id;
 
               return (
-                <motion.div
+                <button
+                  type="button"
                   key={node.id}
                   style={{ top: node.y, left: node.x }}
-                  className="absolute -translate-x-1/2 -translate-y-1/2 z-30 cursor-pointer"
+                  onClick={() => setActiveNode(node.id)}
                   onMouseEnter={() => setActiveNode(node.id)}
-                  onMouseLeave={() => setActiveNode(null)}
-                  whileHover={{ scale: 1.08 }}
+                  onFocus={() => setActiveNode(node.id)}
+                  aria-pressed={isSelected}
+                  className={`absolute -translate-x-1/2 -translate-y-1/2 z-30 transition-all duration-200 outline-none rounded-xl focus-visible:ring-2 focus-visible:ring-paint-orange`}
                 >
                   <div
-                    className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-all duration-300 shadow-sm ${
-                      isHovered
-                        ? 'bg-parchment-light border-ink-black shadow-sketch-lg scale-105'
-                        : 'bg-parchment-light/90 border-ink-deep/15 hover:border-ink-deep/40'
+                    className={`flex items-center gap-2 px-3 py-1.5 rounded-xl border transition-all duration-200 shadow-sm ${
+                      isSelected
+                        ? 'bg-parchment-light border-ink-black shadow-sketch-lg scale-105 ring-1 ring-ink-black/10'
+                        : 'bg-parchment-light/90 border-ink-deep/15 hover:border-ink-deep/40 hover:scale-102'
                     }`}
                   >
                     <div
@@ -228,36 +200,30 @@ export const Hero: React.FC = () => {
                       <span className="font-mono text-[10px] font-bold text-ink-deep leading-tight">
                         {node.label}
                       </span>
-                      <span className="font-hand text-[11px] text-ink-faint leading-none">
+                      <span className="font-mono text-[9px] text-ink-faint leading-none">
                         {node.sub}
                       </span>
                     </div>
                   </div>
-                </motion.div>
+                </button>
               );
             })}
 
-            {/* Active Node Detail Drawer on hover */}
-            <div className="absolute bottom-3 left-4 right-4 z-40 bg-parchment-light/95 backdrop-blur-md p-2.5 rounded-xl border border-ink-deep/15 shadow-sm text-left transition-opacity duration-300">
+            {/* Active Node Detail Drawer */}
+            <div className="absolute bottom-3 left-4 right-4 z-40 bg-parchment-light/95 backdrop-blur-md p-3 rounded-xl border border-ink-deep/15 shadow-sm text-left transition-all duration-200">
               <div className="flex items-center justify-between text-[10px] font-mono text-ink-muted">
                 <span className="font-bold text-paint-orange uppercase">
-                  {activeNode ? nodes.find((n) => n.id === activeNode)?.label : 'System Diagram Explorer'}
+                  {nodes.find((n) => n.id === activeNode)?.label || 'System Node'}
                 </span>
-                <span className="text-ink-faint">HOVER TO EXAMINE</span>
+                <span className="text-ink-faint">ACTIVE INSPECTION</span>
               </div>
-              <p className="text-xs text-ink-deep font-sans mt-0.5">
-                {activeNode
-                  ? nodes.find((n) => n.id === activeNode)?.detail
-                  : 'An ecosystem of native desktop apps, real-time DSP audio pipelines, and local AI agent architectures.'}
+              <p className="text-xs text-ink-deep font-sans mt-1 leading-normal">
+                {nodes.find((n) => n.id === activeNode)?.detail ||
+                  'Select any node to view architecture and implementation details.'}
               </p>
             </div>
-
-            {/* Hand-drawn corner note */}
-            <div className="absolute top-10 right-4 font-hand text-sm text-paint-wine rotate-3 hidden sm:block">
-              no cloud dependencies ➔
-            </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

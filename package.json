@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/fetch-github-data.js",
     "build": "tsc -b && vite build",
+    "fetch-github": "node scripts/fetch-github-data.js",
     "lint": "oxlint",
     "preview": "vite preview"
   },

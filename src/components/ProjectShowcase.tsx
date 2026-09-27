@@ -4,8 +4,8 @@ import { FEATURED_PROJECTS } from '../data/projects';
 import type { Project } from '../data/projects';
 import { ProjectArt } from './ProjectArt';
 import { ProjectModal } from './ProjectModal';
-import { HandArrow, TechBracket } from './Doodles';
-import { ArrowUpRight, ExternalLink, Star, FileText } from 'lucide-react';
+import { TechBracket } from './Doodles';
+import { ArrowUpRight, ExternalLink, FileText } from 'lucide-react';
 import { GithubIcon } from './Icons';
 
 export const ProjectShowcase: React.FC = () => {
@@ -18,33 +18,33 @@ export const ProjectShowcase: React.FC = () => {
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs uppercase tracking-widest text-paint-orange font-bold">
-              01 / SELECTED SHIPPED WORK
+              01 / SELECTED WORK
             </span>
-            <span className="font-hand text-base text-ink-faint">curated systems & engines</span>
+            <span className="font-mono text-xs text-ink-faint">· curated engineering dossiers</span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-ink-black font-normal tracking-tight">
             Flagship Engineering Dossiers
           </h2>
         </div>
 
-        <div className="mt-4 md:mt-0 font-hand text-lg text-ink-muted flex items-center gap-2">
-          <span>click any project for complete architecture notes</span>
-          <HandArrow className="w-8 h-4 text-paint-orange rotate-[-15deg] hidden sm:block" />
+        <div className="mt-4 md:mt-0 font-mono text-xs text-ink-muted flex items-center gap-2">
+          <span>Click any project to inspect architecture notes</span>
+          <span className="text-paint-orange">➔</span>
         </div>
       </div>
 
       {/* Alternating Asymmetric Project Cards Grid */}
-      <div className="space-y-24">
+      <div className="space-y-20">
         {FEATURED_PROJECTS.map((project, index) => {
           const isEven = index % 2 === 0;
 
           return (
             <motion.article
               key={project.id}
-              initial={{ opacity: 0, y: 35 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
               className="relative group"
             >
               {/* Subtle Watercolor Paint Wash behind the card */}
@@ -53,7 +53,7 @@ export const ProjectShowcase: React.FC = () => {
                 style={{ backgroundColor: project.accentColor }}
               />
 
-              {/* Main Card Shell - Styled as an engineer's binder sheet */}
+              {/* Main Card Shell */}
               <div className="relative glass-panel rounded-3xl border border-ink-deep/15 p-6 sm:p-10 shadow-sketch transition-all duration-300 group-hover:shadow-sketch-lg group-hover:border-ink-deep/30">
                 <div
                   className={`grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center ${
@@ -69,11 +69,11 @@ export const ProjectShowcase: React.FC = () => {
                     data-cursor="project"
                   >
                     <motion.div
-                      whileHover={{ scale: 1.02, rotate: isEven ? -1 : 1 }}
-                      transition={{ duration: 0.3 }}
+                      whileHover={{ scale: 1.015 }}
+                      transition={{ duration: 0.2 }}
                       className="relative rounded-2xl border border-ink-deep/15 bg-parchment-card/70 overflow-hidden shadow-sm"
                     >
-                      <ProjectArt id={project.id} accentColor={project.accentColor} />
+                      <ProjectArt id={project.id} />
 
                       {/* Floating Glass Stamp / Quick View Indicator */}
                       <div className="absolute top-3 right-3 glass-panel px-3 py-1 rounded-full text-[10px] font-mono text-ink-deep flex items-center gap-1.5 shadow-sm">
@@ -89,7 +89,7 @@ export const ProjectShowcase: React.FC = () => {
                       isEven ? 'lg:order-2' : 'lg:order-1'
                     }`}
                   >
-                    {/* Chapter & Handwritten Annotation */}
+                    {/* Chapter & Status Header */}
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-center gap-2.5">
                         <span className="font-mono text-xs font-bold text-paint-orange tracking-widest">
@@ -99,10 +99,9 @@ export const ProjectShowcase: React.FC = () => {
                         <TechBracket text={project.category} />
                       </div>
 
-                      <div className="flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-500/10 border border-amber-600/20 text-amber-800 text-[11px] font-mono">
-                        <Star className="w-3 h-3 fill-amber-500 text-amber-500" />
-                        <span>{project.stars}</span>
-                      </div>
+                      <span className="text-[11px] font-mono text-ink-faint px-2.5 py-0.5 rounded-full bg-parchment-base border border-ink-deep/10">
+                        {project.status}
+                      </span>
                     </div>
 
                     {/* Project Title */}
@@ -115,7 +114,7 @@ export const ProjectShowcase: React.FC = () => {
                     </h3>
 
                     {/* Tagline / Subtitle */}
-                    <p className="font-mono text-xs sm:text-sm text-paint-orange font-semibold">
+                    <p className="font-mono text-xs sm:text-sm text-paint-orange font-medium">
                       {project.tagline}
                     </p>
 
@@ -169,8 +168,8 @@ export const ProjectShowcase: React.FC = () => {
                       )}
                     </div>
 
-                    {/* Handwritten Margin Note */}
-                    <div className="pt-2 font-hand text-sm text-ink-faint">
+                    {/* Margin Note */}
+                    <div className="pt-2 font-mono text-xs text-ink-faint italic">
                       {project.annotation}
                     </div>
                   </div>

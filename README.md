@@ -9,17 +9,17 @@
 
 ## 🎨 Design Philosophy: Analog Meets Digital
 
-This portfolio diverges completely from the generic dark-mode purple gradient SaaS templates common across web development. Instead, it pairs **high-touch physical craftsmanship** with **deep systems engineering**:
+This portfolio pairs **physical analog craftsmanship** with **deep systems engineering**:
 
 1. **Analog Heritage**:
    - Primary warm parchment canvas (`#F5F1E8`), fine paper grain textures, and subtle architect's coordinate grids.
    - Hand-painted watercolor washes in burnt orange (`#C85A32`), deep cobalt (`#2B5898`), forest sage (`#2D5D44`), and wine crimson (`#8E3345`).
    - Hand-drawn SVG annotations, chamfered corner markers, arrows, underlines, and notebook stamps.
-   - Editorial serif typography (`Instrument Serif` & `Fraunces`) combined with technical sans (`Plus Jakarta Sans`) and developer handwriting (`Caveat`).
+   - Editorial serif typography (`Instrument Serif`) combined with modern technical sans (`Plus Jakarta Sans`) and code mono (`JetBrains Mono`).
 
 2. **Digital Precision & Modern Polish**:
    - Subtle frosted glassmorphic HUD overlays (`backdrop-blur-md` with refined borders) that feel like precision instruments lying across an engineer's workbench.
-   - Custom magnetic ink-dot cursor with stateful expansion on interactive items (`VIEW ↗` hover trigger for projects). Automatically disabled on touch & mobile hardware.
+   - Restrained desktop magnetic ink-dot cursor that activates specifically over the Project Gallery (`VIEW ↗` trigger) while preserving the natural system cursor across the rest of the application.
    - Spring-damped micro-interactions and scroll-reveals powered by `framer-motion`.
    - 100% accessible: keyboard navigational loops, semantic landmark structure, ARIA annotations, and full `prefers-reduced-motion` compliance.
 
@@ -28,11 +28,11 @@ This portfolio diverges completely from the generic dark-mode purple gradient Sa
 ## 🛠️ Architecture & Tech Stack
 
 - **Framework**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/) (Strict typing with verbatim module syntax)
-- **Bundler**: [Vite](https://vite.dev/) (Rapid HMR, tree-shaken static production bundle with gzip footprint under 150kB)
+- **Bundler**: [Vite](https://vite.dev/) (Rapid HMR, tree-shaken static production bundle with gzip footprint under 140kB)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) with a bespoke ink, parchment, and paint color token system
 - **Motion & Physics**: [Framer Motion](https://www.framer.com/motion/) for responsive topological node mapping and drawer modals
 - **Icons & Graphics**: [Lucide React](https://lucide.dev/) + bespoke hand-crafted SVG stroke illustrations
-- **Typography**: Google Fonts CDN (`Instrument Serif`, `Fraunces`, `Plus Jakarta Sans`, `Caveat`, `JetBrains Mono`)
+- **Typography**: Google Fonts CDN (`Instrument Serif`, `Plus Jakarta Sans`, `JetBrains Mono`)
 
 ---
 
@@ -44,27 +44,29 @@ satiricalguru.github.io/
 │   └── deploy.yml              # Automated GitHub Pages CI/CD workflow
 ├── public/
 │   ├── favicon.svg             # Custom ink monogram favicon
+│   ├── og-image.png            # 1200x630 OpenGraph card
 │   ├── robots.txt              # Search engine discovery configuration
 │   └── sitemap.xml             # Canonical sitemap metadata
+├── scripts/
+│   └── fetch-github-data.js    # Pre-build script fetching live telemetry from GitHub API
 ├── src/
 │   ├── components/
 │   │   ├── Navbar.tsx          # Frosted glass floating navigation with scroll compaction
-│   │   ├── Hero.tsx            # Editorial headline & interactive SVG systems diagram
-│   │   ├── ProjectShowcase.tsx # Asymmetrical editorial flagship projects gallery
-│   │   ├── ProjectArt.tsx      # Bespoke hand-drawn / architectural artwork for projects
+│   │   ├── Hero.tsx            # Editorial headline & accessible systems schematic
+│   │   ├── ProjectShowcase.tsx # Asymmetrical editorial gallery featuring 4 flagship projects
+│   │   ├── ProjectArt.tsx      # Authentic software windows, IDE code buffers & terminal logs
 │   │   ├── ProjectModal.tsx    # Technical architectural dossier modal
-│   │   ├── Lab.tsx             # 12 pinned sketchbook experiments with category filters
-│   │   ├── EngineeringMap.tsx  # Interactive systems topology diagram (zero progress bars)
-│   │   ├── AboutNotebook.tsx   # Architect's notebook ledger & engineering principles
-│   │   ├── GitHubTelemetry.tsx # 49-repository index with search & language filters
+│   │   ├── Lab.tsx             # 12 pinned sketchbook experiments with archive toggle
+│   │   ├── EngineeringMap.tsx  # Systems topology blueprint (zero progress bars)
+│   │   ├── AboutNotebook.tsx   # Architect's memorandum & local-first engineering tenets
+│   │   ├── GitHubTelemetry.tsx # Dynamic telemetry strip & live activity index
 │   │   ├── ContactSection.tsx  # Signed painting dispatch card with verified socials
 │   │   ├── Footer.tsx          # Minimal colophon with back-to-top trigger
-│   │   ├── CustomCursor.tsx    # Magnetic desktop ink-tip cursor (touch-disabled)
-│   │   ├── IntroAnimation.tsx  # 1.2s ink signature splash (one-time per session)
+│   │   ├── CustomCursor.tsx    # Restrained project gallery magnetic cursor (touch-disabled)
 │   │   ├── Doodles.tsx         # SVG hand-drawn arrows, stars, brackets, stamps
 │   │   └── Icons.tsx           # Standalone brand SVG icons (GitHub, Twitter, LinkedIn)
 │   ├── data/
-│   │   ├── github.json         # Real-time metadata for all 49 repositories
+│   │   ├── github.json         # Real-time metadata for all public repositories
 │   │   └── projects.ts         # Curated flagship projects & laboratory experiments
 │   ├── App.tsx                 # Root layout & textured parchment canvas wrapper
 │   ├── index.css               # Global typography, paper grain, and watercolor utilities
@@ -78,18 +80,24 @@ satiricalguru.github.io/
 
 ## 🔬 Curated Engineering Showcase
 
-Zero placeholder text or fabricated metrics. Every project showcases real open-source architectures authored by [@satiricalguru](https://github.com/satiricalguru):
+Every project showcases real open-source architectures authored by [@satiricalguru](https://github.com/satiricalguru):
 
 | Project | Domain | Architecture & Highlights |
 | :--- | :--- | :--- |
-| **Vantage** | Native macOS / Swift | High-performance desktop dynamic wallpaper engine streaming 4K video directly to `kCGDesktopWindowLevel` with sub-1% CPU consumption. |
-| **Forge** | Developer Tool / IDE | Sovereign local AI coding environment forked from VS Code. Strips telemetry and connects directly to Ollama / llama.cpp. |
-| **Project Beatrice** | Real-Time Audio DSP | 10ms low-latency neural voice conversion pipeline combining PyTorch models with native macOS CoreAudio / VST3 drivers. |
-| **SynthID-Remover** | Forensic Security | Client-side 2D Discrete Cosine Transform (DCT) tool that strips Google SynthID imperceptible watermarks without image degradation. |
-| **Wraith** | Autonomous Agents | Static/dynamic binary analysis supervisor driving Ghidra and LLMs through an 11-signal verification parity loop. |
-| **AgriNode** | IoT / Edge Robotics | Automated hydroponic micro-station firmware orchestrating ESP32 sensors, nutrient dosing, and low-power telemetry. |
-| **Jarvis** | Voice Agent | Real-time offline vocal assistant executing local system commands via Whisper speech recognition and llama.cpp. |
-| **Fast-Jev-Agents** | Distributed Agents | High-throughput async agentic message bus handling structured JSON tasks with deterministic state machines. |
+| **Vantage** | Native macOS / Swift | High-performance desktop dynamic wallpaper engine streaming video directly to `kCGDesktopWindowLevel` with display link sync and auto-pause. |
+| **Forge** | Developer Tool / IDE | Sovereign local AI coding environment forked from VS Code. Strips telemetry and connects directly to Ollama / llama.cpp on localhost. |
+| **Project Beatrice** | Real-Time Audio DSP | Experimental neural voice conversion pipeline combining PyTorch acoustic models with native CoreAudio short-frame buffer drivers. |
+| **SynthID-Remover** | Signal Forensics | Client-side 2D Discrete Cosine Transform (DCT) tool that attenuates imperceptible synthetic watermark signals without visual degradation. |
+
+### Laboratory & Archived Experiments
+The Lab section features 12 additional prototypes accessible via category filters and an archive toggle:
+* **Wraith** — Binary analysis supervisor coordinating Ghidra decompilation and local LLM code audits.
+* **AgriNode** — Hydroponic micro-station firmware orchestrating ESP32 sensors and nutrient dosing.
+* **Jarvis** — Offline voice assistant executing local macOS commands with Whisper and llama.cpp.
+* **Local-Mind** — Local document Q&A runner using embedding similarity and on-device models.
+* **Mac Gesture Control** — Hand gesture tracking using OpenCV and MediaPipe to trigger macOS CGEvents.
+* **Beatrice Voicechanger** — Desktop GUI wrapper for real-time RVC voice conversion.
+* **Fast-Jev-Agents**, **Prompt-Forge**, **Auto-Researcher**, **Context-Pruner**, **Screen-Whisper**, **Dev-Telemetry-Blocker**.
 
 ---
 
@@ -112,10 +120,16 @@ npm install
 npm run dev
 ```
 
-### 3. Production Build & Linting
+### 3. Dynamic GitHub Data & Production Build
 ```bash
-# Type check and build static artifacts to /dist
+# Fetch live repository data explicitly (optional):
+npm run fetch-github
+
+# Build for production (automatically executes prebuild to refresh github.json):
 npm run build
+
+# Run linter
+npm run lint
 
 # Preview production build locally
 npm run preview
@@ -123,13 +137,14 @@ npm run preview
 
 ---
 
-## 🔄 How GitHub Project Data Works
+## 🔄 Dynamic GitHub Telemetry Pipeline
 
-1. **Static Build-Time Compilation**:
-   The telemetry section reads from `src/data/github.json`, keeping initial page loads instantaneous with zero unauthenticated client-side GitHub rate-limit errors.
-2. **Editing or Adding Projects**:
-   - To add or modify featured engineering dossiers, edit `src/data/projects.ts`. Each project entry requires the problem statement, engineering approach, technical highlights, architecture diagram flow, and source repository URL.
-   - To refresh repository stars, forks, or language breakdown, execute `npm run build` or update `src/data/github.json`.
+1. **Automatic Prebuild Script**:
+   Running `npm run build` triggers `prebuild` (`node scripts/fetch-github-data.js`). This queries the GitHub REST API for `@satiricalguru` repositories, extracts metadata, formats topics and languages, and generates `src/data/github.json`.
+2. **Resilient Offline Fallback**:
+   If network access is unavailable or unauthenticated rate limits occur during local development, the script logs a warning and preserves the existing cached `src/data/github.json`, guaranteeing builds never fail unexpectedly.
+3. **CI/CD Integration**:
+   In `.github/workflows/deploy.yml`, `GITHUB_TOKEN` is automatically passed into `npm run build`, providing 1,000+ API requests per hour for up-to-date deployment telemetry.
 
 ---
 
@@ -137,7 +152,7 @@ npm run preview
 
 This portfolio deploys automatically via GitHub Actions:
 1. Every push to the `main` branch triggers `.github/workflows/deploy.yml`.
-2. The workflow performs a clean `npm ci`, compiles TypeScript via `tsc -b`, and builds optimized web assets via Vite.
+2. The workflow performs a clean `npm ci`, executes `scripts/fetch-github-data.js` via `prebuild`, compiles TypeScript via `tsc -b`, and bundles static assets via Vite.
 3. Assets are uploaded and published to GitHub Pages at **[https://satiricalguru.github.io/](https://satiricalguru.github.io/)**.
 
 ---
@@ -145,5 +160,5 @@ This portfolio deploys automatically via GitHub Actions:
 ## 📜 Credits & License
 
 - Designed and engineered with extreme care by **Jatin Pandey** ([@satiricalguru](https://github.com/satiricalguru)).
-- Fonts by [Google Fonts](https://fonts.google.com/) (`Instrument Serif` by Rodrigo Fuenzalida & Jordan Runge; `Fraunces` by Undercase Type; `Plus Jakarta Sans` by Tokotype; `Caveat` by Impallari Type; `JetBrains Mono` by JetBrains).
+- Fonts by [Google Fonts](https://fonts.google.com/) (`Instrument Serif` by Rodrigo Fuenzalida & Jordan Runge; `Plus Jakarta Sans` by Tokotype; `JetBrains Mono` by JetBrains).
 - Open-sourced under the [MIT License](LICENSE).

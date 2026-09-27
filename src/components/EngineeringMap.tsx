@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Cpu, Radio, Layers, ShieldCheck } from 'lucide-react';
-import { HandArrow } from './Doodles';
+import { getGitHubStats } from '../data/projects';
 
 interface Pillar {
   id: string;
@@ -17,59 +17,60 @@ interface Pillar {
 
 export const EngineeringMap: React.FC = () => {
   const [activePillar, setActivePillar] = useState<string>('ai-agents');
+  const stats = getGitHubStats();
 
   const pillars: Pillar[] = [
     {
       id: 'ai-agents',
-      name: 'Local AI & Agent Infrastructure',
-      badge: 'PILLAR 01 · OFFLINE INTELLIGENCE',
+      name: 'Local Machine Learning & Tooling',
+      badge: 'Domain 01 · Localhost Inference',
       color: '#C85A32',
       icon: Cpu,
-      techs: ['Python', 'PyTorch', 'Ollama', 'llama.cpp', 'vLLM', 'MCP Server', 'AST Token Pruning'],
+      techs: ['Python', 'PyTorch', 'Ollama', 'llama.cpp', 'REST / SSE', 'Token Context Chunking'],
       architectureFocus:
-        'Lossless context compaction, dual-agent verification loops, local stream handling, zero cloud telemetry',
-      shippedProjects: ['Forge', 'Wraith', 'Fast-Jev-Agents', 'Agents-skills', 'Verdict', 'Local-Mind'],
+        'Context compaction, local streaming response handling, and zero outbound network telemetry',
+      shippedProjects: ['Forge', 'Wraith', 'Fast-Jev-Agents', 'Local-Mind'],
       rationale:
-        'Rather than outsourcing code and reasoning to proprietary remote APIs, building on-device inference runners guarantees sovereign privacy, zero latency variance, and unlimited local capability.'
+        'Building on-device inference runners gives developers complete data confidentiality, reproducible execution, and reliable offline capabilities without cloud dependencies.'
     },
     {
       id: 'audio-dsp',
       name: 'Real-Time DSP & Neural Audio',
-      badge: 'PILLAR 02 · ULTRA-LOW LATENCY',
+      badge: 'Domain 02 · Low-Latency Signal Processing',
       color: '#2D5D44',
       icon: Radio,
-      techs: ['C++', 'VST3', 'Spotify Pedalboard', 'Metal Audio Shaders', 'DirectML', 'JVS Embeddings', 'Edge-TTS'],
+      techs: ['C++', 'CoreAudio', 'PyTorch', 'NumPy / SciPy', 'VST3 Plugin SDK'],
       architectureFocus:
-        '10ms low-latency circular audio queues, quantized speaker embeddings, formant transposition, DAW routing',
-      shippedProjects: ['Beatrice Windows', 'Beatrice macOS', 'RVC-Voicechanger', 'PersonalAssistant', 'EarPods-ANC'],
+        'Sub-frame CoreAudio circular queues, pitch estimation, and local tensor evaluation on Apple Silicon',
+      shippedProjects: ['Project Beatrice', 'Beatrice Voicechanger', 'EarPods-ANC'],
       rationale:
-        'Voice AI is only usable when round-trip latency drops below the human perceptual delay threshold (~20ms). Pushing inference into high-priority audio threads makes synthetic voice feel immediate.'
+        'In interactive audio, latency is the critical constraint. Managing buffer sizes directly in native audio threads keeps voice conversion responsive enough for live vocal monitoring.'
     },
     {
       id: 'native-systems',
-      name: 'Native Systems & Spatial Graphics',
-      badge: 'PILLAR 03 · HARDWARE SYNCHRONIZATION',
+      name: 'Native Systems & Desktop Graphics',
+      badge: 'Domain 03 · Native Compositing',
       color: '#2B5898',
       icon: Layers,
-      techs: ['Swift', 'AppKit', 'CoreGraphics', 'Electron', 'React 19', 'Three.js', 'Next.js 16', 'macOS APIs'],
+      techs: ['Swift / AppKit', 'CoreGraphics', 'AVFoundation', 'TypeScript', 'Electron'],
       architectureFocus:
-        'kCGDesktopWindowLevel window server hooks, multi-display frame pacing, audio-reactive 3D shaders',
-      shippedProjects: ['Vantage', 'Jarvis', 'Contour', 'Pocket-Music', 'End4-mac', 'Ai-Nexus'],
+        'kCGDesktopWindowLevel window server integration, multi-monitor display link pacing, and auto-pause handlers',
+      shippedProjects: ['Vantage', 'Jarvis', 'Mac Gesture Control'],
       rationale:
-        'Web wrappers feel sluggish without native system bridges. Hooking directly into native platform compositors allows fluid graphics without battery drainage.'
+        'Bypassing generic browser compositing in favor of native window hooks allows high-framerate rendering directly on the desktop canvas while conserving laptop battery life.'
     },
     {
       id: 'security-forensics',
-      name: 'Security, Privacy & Signal Forensics',
-      badge: 'PILLAR 04 · CLIENT-SIDE INTEGRITY',
+      name: 'Signal Forensics & Reverse Engineering',
+      badge: 'Domain 04 · Client-Side Analysis',
       color: '#C98A2C',
       icon: ShieldCheck,
-      techs: ['2D DCT Analysis', '2D FFT Filtering', 'WebAssembly', 'Ghidra Decompiler API', 'Cutter', 'C2PA Manifests'],
+      techs: ['2D Discrete Cosine Transform (DCT)', 'OpenCV', 'SciPy', 'Ghidra API', 'AST Parsing'],
       architectureFocus:
-        'Frequency perturbation below JND thresholds, binary container metadata scrubbing, 11-signal binary parity',
-      shippedProjects: ['Synthid-remover', 'Wraith', 'DriveVault', 'Proofline', 'Mobileforce'],
+        'Frequency band perturbation detection, adaptive spectral filtering, and binary disassembly auditing',
+      shippedProjects: ['SynthID-Remover', 'Wraith', 'Dev-Telemetry-Blocker'],
       rationale:
-        'Generative watermarking and telemetry undermine user autonomy. Developing deterministic mathematical filters ensures users retain complete control over their digital artifacts.'
+        'Applying mathematical signal transformations in the frequency domain allows detecting and filtering invisible watermarks while maintaining perceptual fidelity.'
     }
   ];
 
@@ -82,21 +83,21 @@ export const EngineeringMap: React.FC = () => {
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs uppercase tracking-widest text-paint-blue font-bold">
-              03 / TOPOLOGICAL BLUEPRINT
+              03 / ARCHITECTURE & PROFICIENCY MAP
             </span>
-            <span className="font-hand text-base text-ink-faint">no progress bars — real architecture</span>
+            <span className="font-mono text-xs text-ink-faint">· systems topology</span>
           </div>
           <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl text-ink-black font-normal tracking-tight">
             Engineering Skill & Systems Map
           </h2>
           <p className="text-sm sm:text-base text-ink-muted max-w-2xl font-normal leading-relaxed">
-            Technologies mapped as an interconnected blueprint based on actual production code across 49 repositories.
+            Technologies mapped as an interconnected blueprint based on actual code across {stats.totalRepos} repositories.
           </p>
         </div>
 
-        <div className="mt-4 md:mt-0 font-hand text-base text-paint-blue flex items-center gap-2">
-          <span>select a pillar to inspect wiring</span>
-          <HandArrow className="w-8 h-4 rotate-12 hidden sm:block" />
+        <div className="mt-4 md:mt-0 font-mono text-xs text-paint-blue flex items-center gap-1.5">
+          <span>Click any domain to inspect architecture</span>
+          <span>➔</span>
         </div>
       </div>
 
@@ -109,11 +110,11 @@ export const EngineeringMap: React.FC = () => {
             const isSelected = pillar.id === activePillar;
 
             return (
-              <motion.button
+              <button
+                type="button"
                 key={pillar.id}
                 onClick={() => setActivePillar(pillar.id)}
-                whileHover={{ x: 4 }}
-                className={`w-full text-left p-5 rounded-2xl border transition-all duration-300 relative overflow-hidden ${
+                className={`w-full text-left p-5 rounded-2xl border transition-all duration-200 relative overflow-hidden outline-none focus-visible:ring-2 focus-visible:ring-paint-blue ${
                   isSelected
                     ? 'bg-parchment-light border-ink-black shadow-sketch-lg'
                     : 'bg-parchment-card/70 border-ink-deep/15 hover:border-ink-deep/30 shadow-sm'
@@ -140,87 +141,83 @@ export const EngineeringMap: React.FC = () => {
                     <span className="font-mono text-[10px] text-ink-faint uppercase font-bold tracking-wider block">
                       {pillar.badge}
                     </span>
-                    <h3 className="font-serif text-xl sm:text-2xl text-ink-black font-bold">
+                    <h3 className="font-serif text-xl text-ink-black font-medium leading-snug">
                       {pillar.name}
                     </h3>
-                    <p className="text-xs text-ink-muted line-clamp-1">
-                      {pillar.techs.slice(0, 4).join(' · ')}
-                    </p>
                   </div>
                 </div>
-              </motion.button>
+              </button>
             );
           })}
         </div>
 
-        {/* Right Column: Active Blueprint Deep-Dive Panel */}
+        {/* Right Column: Architectural Dossier Panel */}
         <div className="lg:col-span-7">
-          <motion.div
-            key={current.id}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="p-8 sm:p-10 rounded-3xl bg-parchment-card/90 border border-ink-deep/20 shadow-paper notebook-grid space-y-6 text-ink-deep"
-          >
-            {/* Header info */}
-            <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-ink-deep/10">
-              <span className="font-mono text-xs font-bold text-paint-blue tracking-wider bg-paint-blue/10 px-3 py-1 rounded-md">
-                {current.badge}
-              </span>
-              <span className="font-hand text-base text-ink-faint">verified implementation</span>
-            </div>
-
-            {/* Pillar Title */}
-            <div>
-              <h3 className="font-serif text-3xl sm:text-4xl text-ink-black">{current.name}</h3>
-              <p className="font-mono text-xs text-paint-orange mt-1">
-                Architecture Focus: {current.architectureFocus}
-              </p>
-            </div>
-
-            {/* Engineering Rationale */}
-            <div className="p-4 rounded-xl bg-parchment-light/80 border border-ink-deep/15 space-y-1.5">
-              <span className="font-mono text-[10px] uppercase font-bold text-ink-faint tracking-wider block">
-                ✦ Engineering Rationale
-              </span>
-              <p className="text-sm text-ink-deep leading-relaxed font-sans">{current.rationale}</p>
-            </div>
-
-            {/* Technologies in this Domain */}
-            <div className="space-y-2">
-              <span className="font-mono text-[10px] uppercase font-bold text-ink-faint tracking-wider block">
-                Verified Technical Proficiencies
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {current.techs.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1.5 rounded-lg bg-parchment-light border border-ink-deep/15 text-xs font-mono text-ink-black font-medium shadow-xs"
-                  >
-                    {tech}
-                  </span>
-                ))}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.id}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="glass-panel p-6 sm:p-10 rounded-3xl border border-ink-deep/20 shadow-paper space-y-6 notebook-grid text-ink-deep"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between pb-4 border-b border-ink-deep/10">
+                <span className="font-mono text-xs font-bold uppercase tracking-wider" style={{ color: current.color }}>
+                  {current.badge}
+                </span>
+                <span className="font-mono text-[11px] text-ink-faint">
+                  Active Domain
+                </span>
               </div>
-            </div>
 
-            {/* Repositories in this Pillar */}
-            <div className="pt-4 border-t border-ink-deep/10 space-y-2">
-              <span className="font-mono text-[10px] uppercase font-bold text-ink-faint tracking-wider block">
-                Shipped Repositories Demonstrating This Stack
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {current.shippedProjects.map((repo) => (
-                  <span
-                    key={repo}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-ink-black/5 text-ink-deep font-mono text-xs font-semibold"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: current.color }} />
-                    {repo}
-                  </span>
-                ))}
+              {/* Title & Rationale */}
+              <div className="space-y-3">
+                <h3 className="font-serif text-3xl text-ink-black font-normal">{current.name}</h3>
+                <p className="text-sm text-ink-muted leading-relaxed font-sans">{current.rationale}</p>
               </div>
-            </div>
-          </motion.div>
+
+              {/* Architectural Focus */}
+              <div className="p-4 rounded-2xl bg-parchment-base/80 border border-ink-deep/10 space-y-1">
+                <span className="font-mono text-[10px] text-ink-faint uppercase font-bold tracking-wider block">
+                  Core Architectural Focus
+                </span>
+                <p className="text-xs font-mono text-ink-deep leading-relaxed">
+                  {current.architectureFocus}
+                </p>
+              </div>
+
+              {/* Technology Stack Tags */}
+              <div className="space-y-2">
+                <span className="font-mono text-[10px] text-ink-faint uppercase font-bold tracking-wider block">
+                  Technologies & Frameworks
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {current.techs.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1.5 rounded-lg bg-parchment-base border border-ink-deep/15 text-xs font-mono text-ink-deep"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Associated Shipped Work */}
+              <div className="pt-4 border-t border-ink-deep/10 flex flex-wrap items-center justify-between gap-2 text-xs font-mono">
+                <span className="text-ink-faint">RELEVANT REPOSITORIES:</span>
+                <div className="flex flex-wrap gap-1.5">
+                  {current.shippedProjects.map((p) => (
+                    <span key={p} className="px-2 py-0.5 rounded bg-black/5 font-semibold text-ink-black text-[11px]">
+                      {p}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
     </section>

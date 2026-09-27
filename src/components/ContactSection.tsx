@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Copy, Check, ArrowUpRight, Send } from 'lucide-react';
-import { HandStar } from './Doodles';
 import { GithubIcon, TwitterIcon, LinkedinIcon } from './Icons';
 
 export const ContactSection: React.FC = () => {
@@ -19,21 +18,18 @@ export const ContactSection: React.FC = () => {
       handle: '@satiricalguru',
       url: 'https://github.com/satiricalguru',
       icon: GithubIcon,
-      color: '#171614',
     },
     {
       name: 'X (Twitter)',
       handle: '@JayDevSG',
       url: 'https://x.com/JayDevSG',
       icon: TwitterIcon,
-      color: '#1DA1F2',
     },
     {
       name: 'LinkedIn',
       handle: 'Jatin Pandey',
       url: 'https://linkedin.com/in/jatin-pandey-66328141a',
       icon: LinkedinIcon,
-      color: '#0A66C2',
     },
   ];
 
@@ -45,16 +41,13 @@ export const ContactSection: React.FC = () => {
       {/* Main Signed Canvas Card */}
       <div className="relative glass-panel rounded-3xl border border-ink-deep/20 p-8 sm:p-14 lg:p-16 shadow-paper notebook-grid overflow-hidden text-center max-w-4xl mx-auto space-y-10">
         
-        {/* Top Header Annotation */}
+        {/* Top Header */}
         <div className="flex flex-col items-center gap-2">
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-xs uppercase tracking-widest text-paint-orange font-bold">
-              06 / DISPATCH & COLLABORATION
-            </span>
-            <HandStar className="w-4 h-4 text-paint-orange" />
-          </div>
-          <span className="font-hand text-xl text-ink-muted rotate-[-1deg]">
-            got a weird technical problem or an audacious build?
+          <span className="font-mono text-xs uppercase tracking-widest text-paint-orange font-bold">
+            05 / DISPATCH & COLLABORATION
+          </span>
+          <span className="font-mono text-xs text-ink-muted">
+            Have a systems question, local AI architecture, or ambitious build?
           </span>
         </div>
 
@@ -70,7 +63,7 @@ export const ContactSection: React.FC = () => {
           </h2>
 
           <p className="text-base sm:text-lg text-ink-muted max-w-xl mx-auto font-normal leading-relaxed">
-            Whether it's low-latency neural audio, native macOS engineering, telemetry-free local AI tooling, or reverse-engineering systems — my workbench is always open.
+            Whether it is low-latency neural audio, native macOS engineering, or air-gapped local developer tooling — my workbench is always open.
           </p>
         </div>
 
@@ -85,6 +78,7 @@ export const ContactSection: React.FC = () => {
           </a>
 
           <button
+            type="button"
             onClick={copyEmail}
             className="inline-flex items-center gap-2 px-5 py-4 rounded-full border border-ink-deep/20 bg-parchment-light hover:bg-parchment-card text-ink-deep font-mono text-xs transition-all shadow-xs"
             aria-label="Copy email address"
@@ -126,7 +120,7 @@ export const ContactSection: React.FC = () => {
 
         {/* Hand-Drawn Ink Signature / Stamp */}
         <div className="pt-6 flex flex-col items-center gap-1 select-none">
-          <div className="font-hand text-3xl md:text-4xl text-ink-deep rotate-[-2deg] font-bold tracking-wide">
+          <div className="font-serif italic text-3xl md:text-4xl text-ink-deep font-medium tracking-wide">
             Jatin Pandey
           </div>
           <span className="font-mono text-[10px] text-ink-faint tracking-widest uppercase">
