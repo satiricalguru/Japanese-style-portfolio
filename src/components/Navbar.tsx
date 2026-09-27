@@ -42,12 +42,12 @@ export const Navbar: React.FC = () => {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 flex justify-center px-4 py-4 md:py-6 pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 py-4 md:py-5 pointer-events-none">
       <motion.nav
         className={`pointer-events-auto flex items-center justify-between transition-all duration-300 ${
           scrolled
-            ? 'glass-panel px-4 py-2.5 rounded-full shadow-paper scale-[0.98] max-w-4xl w-full'
-            : 'glass-panel px-5 py-3 rounded-full shadow-sketch max-w-5xl w-full'
+            ? 'bg-ink-black/92 backdrop-blur-2xl px-4 py-2.5 rounded-full border border-white/20 shadow-2xl scale-[0.98] max-w-4xl w-full text-parchment-light'
+            : 'bg-ink-black/80 backdrop-blur-xl px-5 py-3 rounded-full border border-white/15 shadow-xl max-w-5xl w-full text-parchment-light'
         }`}
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -56,18 +56,18 @@ export const Navbar: React.FC = () => {
         {/* Brand Monogram */}
         <a
           href="#hero"
-          className="flex items-center gap-2.5 text-ink-black hover:text-paint-orange transition-colors group"
+          className="flex items-center gap-2.5 text-parchment-light hover:text-amber-300 transition-colors group"
           aria-label="Back to top"
         >
-          <div className="w-8 h-8 rounded-full border border-ink-deep/20 bg-parchment-card flex items-center justify-center font-serif italic text-base font-bold text-ink-deep group-hover:border-paint-orange transition-colors">
+          <div className="w-8 h-8 rounded-full border border-white/20 bg-white/10 flex items-center justify-center font-serif italic text-base font-bold text-amber-300 group-hover:border-amber-300 transition-colors">
             JP
           </div>
           <div className="flex flex-col">
-            <span className="font-mono text-xs font-semibold tracking-wider text-ink-deep flex items-center gap-1.5">
+            <span className="font-mono text-xs font-semibold tracking-wider text-parchment-light flex items-center gap-1.5">
               satiricalguru
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             </span>
-            <span className="font-hand text-[11px] text-ink-faint leading-none">systems & ai notebook</span>
+            <span className="font-mono text-[10px] text-slate-400 leading-none">systems & ai notebook</span>
           </div>
         </a>
 
@@ -81,14 +81,14 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 className={`relative px-3.5 py-1.5 rounded-full transition-colors ${
                   isActive
-                    ? 'text-ink-black font-semibold'
-                    : 'text-ink-muted hover:text-ink-black hover:bg-black/5'
+                    ? 'text-white font-bold'
+                    : 'text-slate-300 hover:text-white hover:bg-white/10'
                 }`}
               >
                 {isActive && (
                   <motion.span
                     layoutId="activeIndicator"
-                    className="absolute inset-0 rounded-full bg-paint-orange/10 border border-paint-orange/20 -z-10"
+                    className="absolute inset-0 rounded-full bg-amber-400/20 border border-amber-300/40 -z-10"
                     transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -104,9 +104,9 @@ export const Navbar: React.FC = () => {
             href="https://github.com/satiricalguru"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs font-mono font-medium px-3.5 py-1.5 rounded-full border border-ink-deep/20 bg-parchment-card/80 text-ink-deep hover:bg-ink-black hover:text-parchment-light transition-all shadow-sm group"
+            className="flex items-center gap-1.5 text-xs font-mono font-medium px-3.5 py-1.5 rounded-full border border-white/20 bg-white/10 text-parchment-light hover:bg-amber-400 hover:text-ink-black transition-all shadow-sm group"
           >
-            <GithubIcon className="w-3.5 h-3.5 text-paint-orange group-hover:text-parchment-light transition-colors" />
+            <GithubIcon className="w-3.5 h-3.5 text-amber-300 group-hover:text-ink-black transition-colors" />
             <span>GitHub</span>
             <ArrowUpRight className="w-3 h-3 opacity-60 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
@@ -115,7 +115,7 @@ export const Navbar: React.FC = () => {
         {/* Mobile Hamburger Toggle */}
         <button
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-full text-ink-deep hover:bg-black/5 transition-colors"
+          className="md:hidden p-2 rounded-full text-parchment-light hover:bg-white/10 transition-colors"
           aria-label="Toggle Navigation Menu"
         >
           {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -130,11 +130,11 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="pointer-events-auto absolute top-20 left-4 right-4 glass-panel p-6 rounded-2xl shadow-paper flex flex-col gap-4 md:hidden border border-ink-deep/15"
+            className="pointer-events-auto absolute top-20 left-4 right-4 bg-ink-black/95 backdrop-blur-2xl p-6 rounded-3xl shadow-2xl flex flex-col gap-4 md:hidden border border-white/20 text-parchment-light"
           >
-            <div className="flex items-center justify-between pb-3 border-b border-ink-deep/10">
-              <span className="font-hand text-lg text-ink-muted">Notebook Chapters</span>
-              <span className="font-mono text-xs text-paint-orange">2026 Index</span>
+            <div className="flex items-center justify-between pb-3 border-b border-white/15">
+              <span className="font-serif italic text-lg text-amber-300">Notebook Chapters</span>
+              <span className="font-mono text-xs text-slate-400">2026 Index</span>
             </div>
             <div className="flex flex-col gap-2">
               {navLinks.map((link) => (
@@ -142,24 +142,24 @@ export const Navbar: React.FC = () => {
                   key={link.id}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="px-3 py-2 text-sm font-mono text-ink-deep hover:bg-paint-orange/10 hover:text-paint-orange rounded-lg transition-colors flex items-center justify-between"
+                  className="px-3 py-2 text-sm font-mono text-slate-200 hover:bg-amber-400/20 hover:text-amber-300 rounded-lg transition-colors flex items-center justify-between"
                 >
                   <span>{link.label}</span>
-                  <span className="text-xs text-ink-faint">↗</span>
+                  <span className="text-xs text-slate-400">↗</span>
                 </a>
               ))}
             </div>
-            <div className="pt-2 border-t border-ink-deep/10 flex justify-between items-center">
+            <div className="pt-2 border-t border-white/15 flex justify-between items-center">
               <a
                 href="https://github.com/satiricalguru"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 text-xs font-mono text-ink-black py-2"
+                className="flex items-center gap-2 text-xs font-mono text-white py-2"
               >
-                <GithubIcon className="w-4 h-4 text-paint-orange" />
+                <GithubIcon className="w-4 h-4 text-amber-300" />
                 <span>github.com/satiricalguru</span>
               </a>
-              <span className="font-hand text-xs text-ink-faint">live portfolio</span>
+              <span className="font-mono text-xs text-emerald-400">● live</span>
             </div>
           </motion.div>
         )}
