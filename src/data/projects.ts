@@ -141,7 +141,7 @@ export const FEATURED_PROJECTS: Project[] = [
     techStack: ["PyTorch", "Python", "C++", "CoreAudio", "NumPy / SciPy", "VST3"],
     accentColor: "#2D5D44",
     paintBg: "rgba(45, 93, 68, 0.08)",
-    githubUrl: "https://github.com/satiricalguru/Project-Beatrice",
+    githubUrl: "https://github.com/satiricalguru/Beatrice-voicechanger-mac",
     annotation: "Low-latency vocal conversion",
     status: "DSP Audio Prototype",
     architectureNote: "CoreAudio Input ➔ Pitch & Mel Extractor ➔ Neural Vocoder ➔ Low-Latency Output"

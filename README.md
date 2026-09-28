@@ -1,6 +1,6 @@
 # satiricalguru.github.io — Jatin Pandey (satiricalguru)
 
-> An eccentric engineer's hand-painted research notebook transformed into a luxury interactive website.
+> An illustrated gallery of systems engineering projects and experiments.
 
 [![Live Site](https://img.shields.io/badge/Live%20Portfolio-satiricalguru.github.io-C85A32?style=for-the-badge&logo=githubpages&logoColor=white)](https://satiricalguru.github.io/)
 [![Build & Deploy](https://img.shields.io/github/actions/workflow/status/satiricalguru/satiricalguru.github.io/deploy.yml?branch=main&style=for-the-badge&label=Deployment&color=2D5D44)](https://github.com/satiricalguru/satiricalguru.github.io/actions)
@@ -13,15 +13,13 @@ This portfolio pairs **physical analog craftsmanship** with **deep systems engin
 
 1. **Analog Heritage**:
    - Primary warm parchment canvas (`#F5F1E8`), fine paper grain textures, and subtle architect's coordinate grids.
-   - Hand-painted watercolor washes in burnt orange (`#C85A32`), deep cobalt (`#2B5898`), forest sage (`#2D5D44`), and wine crimson (`#8E3345`).
+   - Watercolor-style chapter illustrations paired with burnt orange (`#C85A32`), deep cobalt (`#2B5898`), forest sage (`#2D5D44`), and wine crimson (`#8E3345`).
    - Hand-drawn SVG annotations, chamfered corner markers, arrows, underlines, and notebook stamps.
    - Editorial serif typography (`Instrument Serif`) combined with modern technical sans (`Plus Jakarta Sans`) and code mono (`JetBrains Mono`).
 
 2. **Digital Precision & Modern Polish**:
-   - Subtle frosted glassmorphic HUD overlays (`backdrop-blur-md` with refined borders) that feel like precision instruments lying across an engineer's workbench.
-   - Restrained desktop magnetic ink-dot cursor that activates specifically over the Project Gallery (`VIEW ↗` trigger) while preserving the natural system cursor across the rest of the application.
-   - Spring-damped micro-interactions and scroll-reveals powered by `framer-motion`.
-   - 100% accessible: keyboard navigational loops, semantic landmark structure, ARIA annotations, and full `prefers-reduced-motion` compliance.
+   - A restrained workbench panel in the hero, with artwork-led project cards below it.
+   - Keyboard-accessible case study dialogs and reduced-motion support.
 
 ---
 
@@ -44,7 +42,8 @@ satiricalguru.github.io/
 │   └── deploy.yml              # Automated GitHub Pages CI/CD workflow
 ├── public/
 │   ├── favicon.svg             # Custom ink monogram favicon
-│   ├── og-image.png            # 1200x630 OpenGraph card
+│   ├── og-image-v2.png         # 1200x630 OpenGraph card
+│   ├── assets/art/*.webp       # Optimized chapter illustrations
 │   ├── robots.txt              # Search engine discovery configuration
 │   └── sitemap.xml             # Canonical sitemap metadata
 ├── scripts/
@@ -54,19 +53,17 @@ satiricalguru.github.io/
 │   │   ├── Navbar.tsx          # Frosted glass floating navigation with scroll compaction
 │   │   ├── Hero.tsx            # Editorial headline & accessible systems schematic
 │   │   ├── ProjectShowcase.tsx # Asymmetrical editorial gallery featuring 4 flagship projects
-│   │   ├── ProjectArt.tsx      # Authentic software windows, IDE code buffers & terminal logs
-│   │   ├── ProjectModal.tsx    # Technical architectural dossier modal
+│   │   ├── ProjectModal.tsx    # Keyboard-accessible case study dialog
 │   │   ├── Lab.tsx             # 12 pinned sketchbook experiments with archive toggle
 │   │   ├── EngineeringMap.tsx  # Systems topology blueprint (zero progress bars)
 │   │   ├── AboutNotebook.tsx   # Architect's memorandum & local-first engineering tenets
-│   │   ├── GitHubTelemetry.tsx # Dynamic telemetry strip & live activity index
+│   │   ├── GitHubTelemetry.tsx # GitHub snapshot compiled during deployment
 │   │   ├── ContactSection.tsx  # Signed painting dispatch card with verified socials
 │   │   ├── Footer.tsx          # Minimal colophon with back-to-top trigger
-│   │   ├── CustomCursor.tsx    # Restrained project gallery magnetic cursor (touch-disabled)
 │   │   ├── Doodles.tsx         # SVG hand-drawn arrows, stars, brackets, stamps
 │   │   └── Icons.tsx           # Standalone brand SVG icons (GitHub, Twitter, LinkedIn)
 │   ├── data/
-│   │   ├── github.json         # Real-time metadata for all public repositories
+│   │   ├── github.json         # Build-time metadata for public repositories
 │   │   └── projects.ts         # Curated flagship projects & laboratory experiments
 │   ├── App.tsx                 # Root layout & textured parchment canvas wrapper
 │   ├── index.css               # Global typography, paper grain, and watercolor utilities

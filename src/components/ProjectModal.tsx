@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, ArrowUpRight } from 'lucide-react';
 import type { Project } from '../data/projects';
@@ -11,11 +11,53 @@ interface ProjectModalProps {
 }
 
 export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!project) return;
+
+    const previousFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    closeButtonRef.current?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        onClose();
+      }
+
+      if (event.key === 'Tab' && dialogRef.current) {
+        const focusable = Array.from(dialogRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        ));
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (!first || !last) return;
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = previousOverflow;
+      previousFocus?.focus();
+    };
+  }, [project, onClose]);
+
   if (!project) return null;
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto overscroll-contain">
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -27,6 +69,11 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
         {/* Modal Window Dossier */}
         <motion.div
+          ref={dialogRef}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="project-dialog-title"
+          aria-describedby="project-dialog-description"
           initial={{ opacity: 0, scale: 0.95, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -36,8 +83,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
           {/* Master Artwork Header Banner */}
           <div className="relative h-44 sm:h-52 -mx-6 sm:-mx-10 -mt-6 sm:-mt-10 overflow-hidden border-b border-ink-deep/20 mb-6 group">
             <img
-              src={`/assets/art/${project.id}.jpg`}
-              alt={project.title}
+              src={`/assets/art/${project.id}.webp`}
+              alt={`Concept illustration for ${project.title}`}
               className="w-full h-full object-cover object-center filter saturate-[1.1] contrast-[1.05]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-parchment-light via-ink-black/35 to-ink-black/60" />
@@ -49,6 +96,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               </span>
 
               <button
+                ref={closeButtonRef}
                 onClick={onClose}
                 className="w-8 h-8 rounded-full bg-black/60 border border-white/20 flex items-center justify-center text-white hover:bg-black/90 transition-colors backdrop-blur-md"
                 aria-label="Close dossier"
@@ -63,7 +111,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                 <span className="font-mono text-[10px] text-amber-300 uppercase tracking-widest block font-bold">
                   {project.category}
                 </span>
-                <h2 className="font-serif text-2xl sm:text-3xl text-white font-medium drop-shadow-sm">
+                <h2 id="project-dialog-title" className="font-serif text-2xl sm:text-3xl text-white font-medium drop-shadow-sm">
                   {project.title}
                 </h2>
               </div>
@@ -75,7 +123,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
           {/* Subtitle & Classification */}
           <div className="space-y-1 pb-4 border-b border-ink-deep/10">
-            <p className="text-base text-paint-orange font-mono font-medium">{project.tagline}</p>
+            <p id="project-dialog-description" className="text-base text-paint-orange font-mono font-medium">{project.tagline}</p>
             <div className="text-xs font-mono text-ink-faint flex items-center gap-2">
               <TechBracket text={project.annotation} />
             </div>

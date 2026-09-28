@@ -46,7 +46,7 @@ export const Navbar: React.FC = () => {
       <motion.nav
         className={`pointer-events-auto flex items-center justify-between transition-all duration-300 ${
           scrolled
-            ? 'bg-ink-black/92 backdrop-blur-2xl px-4 py-2.5 rounded-full border border-white/20 shadow-2xl scale-[0.98] max-w-4xl w-full text-parchment-light'
+            ? 'bg-ink-black/95 backdrop-blur-2xl px-4 py-2.5 rounded-full border border-white/20 shadow-2xl scale-[0.98] max-w-4xl w-full text-parchment-light'
             : 'bg-ink-black/80 backdrop-blur-xl px-5 py-3 rounded-full border border-white/15 shadow-xl max-w-5xl w-full text-parchment-light'
         }`}
         initial={{ y: -50, opacity: 0 }}

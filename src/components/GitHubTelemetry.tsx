@@ -43,7 +43,7 @@ export const GitHubTelemetry: React.FC = () => {
             <div className="flex items-center gap-2">
               <GithubIcon className="w-4 h-4 text-paint-orange" />
               <span className="font-mono text-xs uppercase tracking-widest text-paint-orange font-bold">
-                OPEN SOURCE TELEMETRY
+                OPEN SOURCE ACTIVITY
               </span>
             </div>
             <h3 className="font-serif text-2xl sm:text-3xl text-ink-black font-normal">
