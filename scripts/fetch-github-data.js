@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const outputPath = path.resolve(__dirname, '../src/data/github.json');
+const profilePath = path.resolve(__dirname, '../src/data/github-profile.json');
 
 async function fetchGitHubData() {
   console.log('[GitHub Telemetry] Fetching live repository data for @satiricalguru...');
@@ -51,6 +52,22 @@ async function fetchGitHubData() {
     }));
 
     mapped.sort((a, b) => b.stars - a.stars);
+
+    try {
+      const userRes = await fetch('https://api.github.com/users/satiricalguru', { headers });
+      if (userRes.ok) {
+        const user = await userRes.json();
+        const profile = {
+          followers: user.followers ?? 0,
+          following: user.following ?? 0,
+          publicRepos: user.public_repos ?? 0,
+        };
+        fs.writeFileSync(profilePath, JSON.stringify(profile, null, 2), 'utf-8');
+        console.log('[GitHub Telemetry] Updated src/data/github-profile.json');
+      }
+    } catch (profileErr) {
+      console.warn(`[GitHub Telemetry] Profile fetch skipped: ${profileErr.message}`);
+    }
 
     fs.writeFileSync(outputPath, JSON.stringify(mapped, null, 2), 'utf-8');
     console.log(`[GitHub Telemetry] Successfully compiled ${mapped.length} public repositories to src/data/github.json`);

@@ -1,39 +1,71 @@
-import React from 'react';
-import { Navbar } from './components/Navbar';
+import { useCallback, useEffect, useState } from 'react';
+import { Preloader } from './components/Preloader';
+import { Cursor } from './components/Cursor';
+import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
-import { ProjectShowcase } from './components/ProjectShowcase';
-import { Lab } from './components/Lab';
-import { EngineeringMap } from './components/EngineeringMap';
-import { AboutNotebook } from './components/AboutNotebook';
-import { GitHubTelemetry } from './components/GitHubTelemetry';
-import { ContactSection } from './components/ContactSection';
-import { Footer } from './components/Footer';
+import { Prologue } from './components/Prologue';
+import { Works } from './components/Works';
+import { Craft } from './components/Craft';
+import { Archive } from './components/Archive';
+import { Contact } from './components/Contact';
+import { lockScroll, reducedMotion, startSmoothScroll } from './lib/motion';
 
-export const App: React.FC = () => {
+const SEEN = 'jp:intro-seen';
+
+function introSeen() {
+  try {
+    return sessionStorage.getItem(SEEN) === '1';
+  } catch {
+    return false;
+  }
+}
+
+export default function App() {
+  const [skip] = useState(() => reducedMotion() || introSeen());
+  const [ready, setReady] = useState(skip);
+  const [loading, setLoading] = useState(!skip);
+
+  useEffect(() => startSmoothScroll(), []);
+  useEffect(() => lockScroll(loading), [loading]);
+
+  const reveal = useCallback(() => setReady(true), []);
+  const done = useCallback(() => {
+    setLoading(false);
+    try {
+      sessionStorage.setItem(SEEN, '1');
+    } catch {
+      /* storage unavailable — the intro simply plays again */
+    }
+  }, []);
+
   return (
-    <div className="relative min-h-screen bg-parchment-base text-ink-deep selection:bg-paint-orange/20 selection:text-ink-black overflow-x-hidden">
-      {/* Global Analog Paper Grid & Texture Layer */}
-      <div className="fixed inset-0 pointer-events-none notebook-grid opacity-50 z-0" />
-      <div className="fixed inset-0 pointer-events-none paper-grain opacity-30 z-0" />
+    <>
+      <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
+        <symbol id="lily-mark" viewBox="0 0 32 32">
+          <g fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+            <path d="M16 19C13.5 13.5 9 10.5 3.5 10" />
+            <path d="M16 19C18.5 13.5 23 10.5 28.5 10" />
+            <path d="M16 19C15 12.5 12.5 7 9 3.5" />
+            <path d="M16 19C17 12.5 19.5 7 23 3.5" />
+            <path d="M16 19V2.5" />
+            <path d="M16 19C11.5 19.5 7.5 18 6 14.5" />
+            <path d="M16 19C20.5 19.5 24.5 18 26 14.5" />
+            <path d="M16 19.5V30" opacity=".55" />
+          </g>
+        </symbol>
+      </svg>
 
-      {/* Floating Frosted Glass Navbar */}
-      <Navbar />
-
-      {/* Main Narrative Flow */}
-      <main className="relative z-10">
-        <Hero />
-        <ProjectShowcase />
-        <Lab />
-        <EngineeringMap />
-        <AboutNotebook />
-        <GitHubTelemetry />
-        <ContactSection />
+      {loading ? <Preloader onReveal={reveal} onDone={done} /> : null}
+      <Cursor />
+      <Nav ready={ready} />
+      <main>
+        <Hero ready={ready} />
+        <Prologue />
+        <Works />
+        <Craft />
+        <Archive />
       </main>
-
-      {/* Minimalist Colophon Footer */}
-      <Footer />
-    </div>
+      <Contact />
+    </>
   );
-};
-
-export default App;
+}

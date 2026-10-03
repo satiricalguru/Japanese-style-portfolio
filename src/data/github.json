@@ -15,11 +15,11 @@
       "voice-conversion",
       "vst3"
     ],
-    "stars": 16,
+    "stars": 18,
     "forks": 0,
     "url": "https://github.com/satiricalguru/Beatrice-voicechanger-windows",
     "homepage": "",
-    "updatedAt": "2026-09-27T09:44:26Z",
+    "updatedAt": "2026-10-02T08:15:23Z",
     "isFork": false
   },
   {
@@ -61,11 +61,11 @@
       "synthid",
       "watermark-remover"
     ],
-    "stars": 9,
-    "forks": 1,
+    "stars": 10,
+    "forks": 2,
     "url": "https://github.com/satiricalguru/Synthid-remover",
     "homepage": "",
-    "updatedAt": "2026-09-27T09:38:23Z",
+    "updatedAt": "2026-10-01T12:05:26Z",
     "isFork": false
   },
   {
@@ -571,6 +571,97 @@
     "isFork": false
   },
   {
+    "name": "OpenBot",
+    "description": "🤖 Free, open-source AI teammates with their own computers + an AI video brain. Desktop app alternative to Grok Bot, OpenAI dots & muse.ai. Runs 100% local with Ollama.",
+    "language": "JavaScript",
+    "topics": [
+      "ai-agents",
+      "ai-assistant",
+      "clip",
+      "desktop-app",
+      "electron",
+      "free",
+      "grok-bot-alternative",
+      "local-llm",
+      "muse-ai-alternative",
+      "ollama",
+      "open-source",
+      "self-hosted",
+      "video-search",
+      "whisper"
+    ],
+    "stars": 2,
+    "forks": 0,
+    "url": "https://github.com/satiricalguru/OpenBot",
+    "homepage": "https://github.com/satiricalguru/OpenBot#readme",
+    "updatedAt": "2026-10-02T12:21:30Z",
+    "isFork": false
+  },
+  {
+    "name": "Mac-gesture-control",
+    "description": "🖐️ Touchless pointer, click, drag, and scroll control for macOS using on-device computer vision",
+    "language": "Python",
+    "topics": [
+      "accessibility",
+      "computer-vision",
+      "gestures",
+      "human-computer-interaction",
+      "macos",
+      "mediapipe",
+      "opencv",
+      "python",
+      "quartz",
+      "touchless"
+    ],
+    "stars": 2,
+    "forks": 0,
+    "url": "https://github.com/satiricalguru/Mac-gesture-control",
+    "homepage": "",
+    "updatedAt": "2026-09-30T18:52:09Z",
+    "isFork": false
+  },
+  {
+    "name": "Hinge-Jev",
+    "description": "🎯 A Jev-powered decision engine and visual studio that prices uncertainty and asks the question that matters.",
+    "language": "TypeScript",
+    "topics": [
+      "decision-engine",
+      "decision-theory",
+      "human-in-the-loop",
+      "jev",
+      "typesafe",
+      "typescript",
+      "value-of-information"
+    ],
+    "stars": 2,
+    "forks": 0,
+    "url": "https://github.com/satiricalguru/Hinge-Jev",
+    "homepage": "",
+    "updatedAt": "2026-09-30T18:51:47Z",
+    "isFork": false
+  },
+  {
+    "name": "Civic-Signal-Laya",
+    "description": "🏛️ Multilingual public-service decision intelligence and review workbench powered by Laya",
+    "language": "JavaScript",
+    "topics": [
+      "civic-tech",
+      "decision-support",
+      "decision-theory",
+      "human-in-the-loop",
+      "laya",
+      "multilingual",
+      "react",
+      "vite"
+    ],
+    "stars": 2,
+    "forks": 0,
+    "url": "https://github.com/satiricalguru/Civic-Signal-Laya",
+    "homepage": "",
+    "updatedAt": "2026-09-30T18:51:46Z",
+    "isFork": false
+  },
+  {
     "name": "Fast-Jev-Agents",
     "description": "High-performance verbatim context compaction for coding agents (Claude, Codex, Antigravity, Gemini, OpenCode)",
     "language": "TypeScript",
@@ -754,46 +845,15 @@
     "isFork": false
   },
   {
-    "name": "Hinge-Jev",
-    "description": "🎯 A Jev-powered decision engine and visual studio that prices uncertainty and asks the question that matters.",
+    "name": "Podium",
+    "description": "🎙️ Interactive 3D auditorium and AI-assisted public speaking rehearsal studio",
     "language": "TypeScript",
-    "topics": [
-      "decision-engine",
-      "decision-theory",
-      "human-in-the-loop",
-      "jev",
-      "typesafe",
-      "typescript",
-      "value-of-information"
-    ],
+    "topics": [],
     "stars": 1,
     "forks": 0,
-    "url": "https://github.com/satiricalguru/Hinge-Jev",
+    "url": "https://github.com/satiricalguru/Podium",
     "homepage": "",
-    "updatedAt": "2026-09-23T08:45:45Z",
-    "isFork": false
-  },
-  {
-    "name": "Mac-gesture-control",
-    "description": "🖐️ Touchless pointer, click, drag, and scroll control for macOS using on-device computer vision",
-    "language": "Python",
-    "topics": [
-      "accessibility",
-      "computer-vision",
-      "gestures",
-      "human-computer-interaction",
-      "macos",
-      "mediapipe",
-      "opencv",
-      "python",
-      "quartz",
-      "touchless"
-    ],
-    "stars": 1,
-    "forks": 0,
-    "url": "https://github.com/satiricalguru/Mac-gesture-control",
-    "homepage": "",
-    "updatedAt": "2026-09-17T10:33:21Z",
+    "updatedAt": "2026-09-30T18:51:54Z",
     "isFork": false
   },
   {
@@ -867,6 +927,29 @@
     "isFork": true
   },
   {
+    "name": "Nexus-Web-Page",
+    "description": "🌌 Interactive 3D web portal for Nexus — Research, Space & Technology Club at Manipal University Jaipur",
+    "language": "CSS",
+    "topics": [
+      "interactive-3d",
+      "landing-page",
+      "manipal-university-jaipur",
+      "nexus-muj",
+      "space",
+      "threejs",
+      "typescript",
+      "vite",
+      "web-audio",
+      "webgl"
+    ],
+    "stars": 0,
+    "forks": 0,
+    "url": "https://github.com/satiricalguru/Nexus-Web-Page",
+    "homepage": "https://nexus-web-page.vercel.app",
+    "updatedAt": "2026-10-03T06:56:07Z",
+    "isFork": false
+  },
+  {
     "name": "satiricalguru.github.io",
     "description": "Personal creative developer portfolio for Jatin Pandey (satiricalguru)",
     "language": "TypeScript",
@@ -875,7 +958,7 @@
     "forks": 0,
     "url": "https://github.com/satiricalguru/satiricalguru.github.io",
     "homepage": "",
-    "updatedAt": "2026-09-27T16:32:43Z",
+    "updatedAt": "2026-09-28T04:48:30Z",
     "isFork": false
   },
   {
@@ -889,18 +972,6 @@
     "homepage": "https://acode.app/plugin/hallofcodes.rutex.coding_agent",
     "updatedAt": "2026-09-26T14:41:21Z",
     "isFork": true
-  },
-  {
-    "name": "Podium",
-    "description": "🎙️ Interactive 3D auditorium and AI-assisted public speaking rehearsal studio",
-    "language": "TypeScript",
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/satiricalguru/Podium",
-    "homepage": "",
-    "updatedAt": "2026-09-24T16:16:39Z",
-    "isFork": false
   },
   {
     "name": "github-achievements-lab",

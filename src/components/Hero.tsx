@@ -1,86 +1,113 @@
-import React, { useState } from 'react';
-import { ArrowDown, ArrowUpRight, Eye, EyeOff } from 'lucide-react';
-import { getGitHubStats } from '../data/projects';
+import { useEffect, useRef } from 'react';
+import { HiganbanaField } from '../lib/higanbana';
+import { go, reducedMotion } from '../lib/motion';
+import { Split } from './Split';
 
-const practices = [
-  { name: 'Native desktop', detail: 'Responsive macOS utilities built close to the system.' },
-  { name: 'Local AI', detail: 'Developer tools that keep inference on the user’s machine.' },
-  { name: 'Neural audio', detail: 'Voice and signal pipelines designed for real-time use.' },
-  { name: 'Signal analysis', detail: 'Practical experiments in image and binary forensics.' },
-];
+export function Hero({ ready }: { ready: boolean }) {
+  const section = useRef<HTMLElement>(null);
+  const canvas = useRef<HTMLCanvasElement>(null);
 
-export const Hero: React.FC = () => {
-  const [showArtwork, setShowArtwork] = useState(false);
-  const [activePractice, setActivePractice] = useState(0);
-  const stats = getGitHubStats();
+  useEffect(() => {
+    if (!ready || !canvas.current || !section.current) return;
+    const el = section.current;
+    const cv = canvas.current;
+    const field = new HiganbanaField(cv, { still: reducedMotion(), delay: 0.35 });
+
+    const io = new IntersectionObserver(([e]) => field.setVisible(e.isIntersecting));
+    io.observe(el);
+
+    const local = (e: PointerEvent) => {
+      const r = cv.getBoundingClientRect();
+      return [e.clientX - r.left, e.clientY - r.top] as const;
+    };
+    const move = (e: PointerEvent) => field.pointer(...local(e));
+    const leave = () => field.pointerLeave();
+    const click = (e: PointerEvent) => {
+      if ((e.target as HTMLElement).closest('a, button')) return;
+      field.ripple(...local(e));
+    };
+    el.addEventListener('pointermove', move);
+    el.addEventListener('pointerleave', leave);
+    el.addEventListener('pointerdown', click);
+
+    let raf = 0;
+    const onScroll = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const p = Math.min(1, Math.max(0, window.scrollY / (el.offsetHeight * 0.75)));
+        field.setScrollRed(p * p * (3 - 2 * p));
+        el.style.setProperty('--hero-p', p.toFixed(4));
+      });
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    return () => {
+      field.destroy();
+      io.disconnect();
+      el.removeEventListener('pointermove', move);
+      el.removeEventListener('pointerleave', leave);
+      el.removeEventListener('pointerdown', click);
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, [ready]);
 
   return (
-    <section id="hero" className="relative min-h-[760px] lg:min-h-screen pt-28 pb-20 flex items-center overflow-hidden bg-ink-black">
-      <img
-        src="/assets/art/hero_canvas.webp"
-        alt="Watercolor illustration of a celestial observatory"
-        fetchPriority="high"
-        decoding="async"
-        className="absolute inset-0 w-full h-full object-cover object-center"
-      />
-      <div className={`absolute inset-0 transition-opacity duration-500 ${showArtwork ? 'bg-ink-black/10' : 'bg-gradient-to-r from-ink-black/95 via-ink-black/70 to-ink-black/20'}`} />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink-black/75 via-transparent to-ink-black/35 pointer-events-none" />
+    <section
+      id="top"
+      ref={section}
+      className={`hero ${ready ? 'is-in' : ''}`}
+      data-cursor="Click"
+      aria-label="Introduction"
+    >
+      <canvas ref={canvas} className="hero__field" aria-hidden="true" />
+      <div className="hero__veil" aria-hidden="true" />
 
-      <button
-        type="button"
-        onClick={() => setShowArtwork((value) => !value)}
-        aria-pressed={showArtwork}
-        className="absolute top-24 right-6 md:right-12 z-20 inline-flex items-center gap-2 px-3 py-2 rounded-full bg-ink-black/80 border border-white/30 text-parchment-light text-xs font-mono hover:bg-ink-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300"
-      >
-        {showArtwork ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-        <span>{showArtwork ? 'Show portfolio' : 'View artwork'}</span>
-      </button>
-
-      <div inert={showArtwork} className={`relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid lg:grid-cols-12 gap-12 items-center transition-opacity duration-500 ${showArtwork ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
-        <div className="lg:col-span-7 max-w-3xl space-y-7">
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-amber-200">Jatin Pandey · Creative systems engineer</p>
-          <h1 className="font-serif text-[clamp(3.3rem,7vw,6.5rem)] leading-[0.98] tracking-tight text-parchment-light">
-            I turn strange ideas into <em className="text-amber-200">working software.</em>
-          </h1>
-          <p className="max-w-xl text-base sm:text-lg leading-relaxed text-slate-200">
-            I build local AI tools, native desktop utilities, and real-time audio systems. This illustrated portfolio opens the sketchbook behind four selected projects.
+      <div className="hero__inner">
+        <p className="eyebrow hero__eyebrow">
+          <span className="eyebrow__dot" />
+          App &amp; Web Developer — India
+        </p>
+        <h1 className="hero__title">
+          <Split text="Jatin" delay={0.15} stagger={0.06} />
+          <Split text="Pandey" delay={0.35} stagger={0.06} className="hero__title-2" />
+        </h1>
+        <div className="hero__meta">
+          <p className="hero__lede">
+            Building things, <em>breaking</em> things, and occasionally fixing them.
           </p>
-          <div className="flex flex-wrap gap-3 pt-2 font-mono text-xs">
-            <a href="#works" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-amber-400 text-ink-black font-bold hover:bg-amber-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300">
-              Explore selected work <ArrowDown className="w-4 h-4" />
+          <ul className="hero__roles" aria-label="Roles">
+            <li>App &amp; Web Developer</li>
+            <li>CTF Grinder</li>
+            <li>AI Tinkerer</li>
+          </ul>
+          <div className="hero__cta">
+            <a href="#work" className="btn btn--red" onClick={(e) => go(e, 'work')}>
+              Selected work
+              <span className="btn__arrow" aria-hidden="true">↓</span>
             </a>
-            <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-white/40 bg-ink-black/40 text-parchment-light hover:bg-ink-black/75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-300">
-              Get in touch <ArrowUpRight className="w-4 h-4" />
+            <a href="https://github.com/satiricalguru" className="btn btn--ghost" target="_blank" rel="noreferrer">
+              GitHub
+              <span className="btn__arrow" aria-hidden="true">↗</span>
             </a>
-          </div>
-          <p className="text-xs font-mono text-slate-300">Open source snapshot · {stats.totalRepos} repositories · {stats.totalStars} stars</p>
-        </div>
-
-        <div className="hidden lg:block lg:col-span-5">
-          <div className="rounded-[2rem] border border-white/25 bg-ink-black/75 backdrop-blur-xl p-7 text-parchment-light shadow-2xl">
-            <div className="flex items-center justify-between border-b border-white/20 pb-5">
-              <span className="font-serif italic text-2xl">The workbench</span>
-              <span className="font-mono text-[10px] tracking-widest text-amber-200">01—04 / PRACTICE</span>
-            </div>
-            <div className="grid grid-cols-2 gap-2 mt-5">
-              {practices.map((practice, index) => (
-                <button
-                  key={practice.name}
-                  type="button"
-                  onClick={() => setActivePractice(index)}
-                  aria-pressed={activePractice === index}
-                  className={`rounded-xl border px-4 py-4 text-left text-xs font-mono transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-amber-300 ${activePractice === index ? 'bg-amber-400 text-ink-black border-amber-400 font-bold' : 'bg-white/5 text-parchment-light border-white/20 hover:bg-white/10'}`}
-                >
-                  <span className="block text-[10px] opacity-70 mb-1">0{index + 1}</span>
-                  {practice.name}
-                </button>
-              ))}
-            </div>
-            <p className="mt-5 min-h-12 text-sm leading-relaxed text-slate-200">{practices[activePractice].detail}</p>
-            <a href="#works" className="mt-5 inline-flex items-center gap-2 font-mono text-xs text-amber-200 hover:underline">See the project gallery <ArrowUpRight className="w-4 h-4" /></a>
           </div>
         </div>
       </div>
+
+      <p className="hero__vertical" lang="ja" aria-hidden="true">
+        彼岸花 — 咲いて、赤く染まる
+      </p>
+
+      <div className="hero__foot">
+        <span className="hero__scroll">
+          <span className="hero__scroll-line" />
+          Scroll
+        </span>
+        <span className="hero__hint">Move to stain · Click to ripple</span>
+        <span className="hero__coords">India · Open to work</span>
+      </div>
     </section>
   );
-};
+}
