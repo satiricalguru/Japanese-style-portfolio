@@ -61,7 +61,7 @@ Inspired by the white spider lilies of *Tokyo Ghoul* that slowly stain red, the 
 ## ✨ Details
 
 - **Procedural flowers:** each lily is an umbel of 6 to 8 florets with six recurved tepals and seven upswept stamens. It's built from Bézier curves and drawn with about three draw calls per flower (`src/lib/higanbana.ts`).
-- **Colour waves:** waves fronts move outward from a point, and each flower records the moment a front reaches it. That is how the white wash, the red bleed and the cursor stains coexist.
+- **Colour waves:** wave fronts move outward from a point, and each flower records the moment a front reaches it. That is how the white wash, the red bleed and the cursor stains coexist.
 - **Quiet chrome:** taking a cue from [Active Theory](https://activetheory.net), the page is void black with hairline borders, frosted pill controls and tiny mono labels, so the artwork carries all the colour.
 - **Motion:** masked letter reveals, a statement that lights word by word as you scroll, a cursor-following kanji seal, a custom cursor, film grain and Lenis smooth scrolling.
 - **Accessibility:** fully keyboard-usable. `prefers-reduced-motion` renders a single still frame, and the field pauses whenever it's offscreen or the tab is hidden.
