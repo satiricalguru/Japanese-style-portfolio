@@ -32,7 +32,14 @@ const LIVE_OVERRIDES: Record<string, string> = {
   'Nexus-Web-Page': 'https://nexus-official-site.vercel.app/',
 };
 
-export const repos = (githubData as Repo[]).filter((r) => !r.isFork);
+/** Canonical repositories that live outside this profile (e.g. an organisation). */
+const REPO_OVERRIDES: Record<string, string> = {
+  'Nexus-Web-Page': 'https://github.com/Nexus-Web-Development/Nexus-Web-Page',
+};
+
+export const repos = (githubData as Repo[])
+  .filter((r) => !r.isFork)
+  .map((r) => ({ ...r, url: REPO_OVERRIDES[r.name] ?? r.url }));
 
 export function liveUrl(r: Repo): string | undefined {
   const url = LIVE_OVERRIDES[r.name] ?? r.homepage;
