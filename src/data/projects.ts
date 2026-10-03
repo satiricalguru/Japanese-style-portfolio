@@ -27,7 +27,17 @@ export interface Work {
   live?: string;
 }
 
+/** Live sites that differ from (or are missing in) the repo's GitHub homepage field. */
+const LIVE_OVERRIDES: Record<string, string> = {
+  'Nexus-Web-Page': 'https://nexus-official-site.vercel.app/',
+};
+
 export const repos = (githubData as Repo[]).filter((r) => !r.isFork);
+
+export function liveUrl(r: Repo): string | undefined {
+  const url = LIVE_OVERRIDES[r.name] ?? r.homepage;
+  return url && !url.includes('github.com') ? url : undefined;
+}
 
 const starsOf = (name: string) => repos.find((r) => r.name === name)?.stars ?? 0;
 

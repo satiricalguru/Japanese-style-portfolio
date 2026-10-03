@@ -383,7 +383,7 @@
     "forks": 0,
     "url": "https://github.com/satiricalguru/satiricalguru",
     "homepage": "",
-    "updatedAt": "2026-10-03T09:55:12Z",
+    "updatedAt": "2026-10-03T10:03:46Z",
     "isFork": false
   },
   {
@@ -927,15 +927,23 @@
     "isFork": true
   },
   {
-    "name": "satiricalguru.github.io",
-    "description": "Personal creative developer portfolio for Jatin Pandey (satiricalguru)",
+    "name": "Japanese-style-portfolio",
+    "description": "🌸 Higanbana — a Tokyo Ghoul–inspired portfolio: procedural spider lilies that bloom white, then bleed red.",
     "language": "TypeScript",
-    "topics": [],
+    "topics": [
+      "anime",
+      "canvas",
+      "creative-coding",
+      "portfolio",
+      "react",
+      "typescript",
+      "vite"
+    ],
     "stars": 0,
     "forks": 0,
-    "url": "https://github.com/satiricalguru/satiricalguru.github.io",
-    "homepage": "https://old-gray.vercel.app",
-    "updatedAt": "2026-10-03T10:00:03Z",
+    "url": "https://github.com/satiricalguru/Japanese-style-portfolio",
+    "homepage": "https://satiricalguru.github.io/Japanese-style-portfolio/",
+    "updatedAt": "2026-10-03T10:08:34Z",
     "isFork": false
   },
   {

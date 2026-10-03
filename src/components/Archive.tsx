@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import type { CSSProperties } from 'react';
 import { SectionHead } from './SectionHead';
-import { repos } from '../data/projects';
+import { liveUrl, repos } from '../data/projects';
 import { useReveal } from '../lib/motion';
 
 const fmt = new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric' });
@@ -66,28 +66,36 @@ export function Archive() {
           <span>Stars</span>
           <span>Updated</span>
         </div>
-        {shown.map((r, i) => (
-          <a
+        {shown.map((r, i) => {
+          const live = liveUrl(r);
+          return (
+          <div
             key={r.name}
             className="arow"
-            href={r.url}
-            target="_blank"
-            rel="noreferrer"
             role="listitem"
             style={{ '--i': Math.min(i, 14) } as CSSProperties}
           >
             <span className="arow__name">
-              {r.name.replace(/-/g, ' ')}
+              <a className="arow__link" href={r.url} target="_blank" rel="noreferrer">
+                {r.name.replace(/-/g, ' ')}
+              </a>
               <span className="arow__arrow" aria-hidden="true">
                 ↗
               </span>
+              {live ? (
+                <a className="arow__live" href={live} target="_blank" rel="noreferrer" aria-label={`${r.name} live site`}>
+                  <span className="pill__dot" />
+                  Live
+                </a>
+              ) : null}
             </span>
             <span className="arow__desc">{r.description.replace(/\p{Extended_Pictographic}️?\s*/gu, '')}</span>
             <span className="arow__lang">{r.language === 'Code' ? '—' : r.language}</span>
             <span className="arow__stars">{r.stars ? `★ ${r.stars}` : '—'}</span>
             <span className="arow__date">{fmt.format(new Date(r.updatedAt))}</span>
-          </a>
-        ))}
+          </div>
+          );
+        })}
       </div>
 
       {sorted.length > INITIAL ? (
