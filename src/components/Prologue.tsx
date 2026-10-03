@@ -74,7 +74,7 @@ export function Prologue() {
       <div ref={bioRef} className={`prologue__grid ${bioIn ? 'is-in' : ''}`}>
         <figure className="prologue__portrait">
           <div className="prologue__frame">
-            <img src="/avatar.jpg" alt="Jatin Pandey's avatar" width="460" height="460" loading="lazy" />
+            <img src={`${import.meta.env.BASE_URL}avatar.jpg`} alt="Jatin Pandey's avatar" width="460" height="460" loading="lazy" />
           </div>
           <figcaption>
             <span>Jatin Pandey</span>

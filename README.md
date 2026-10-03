@@ -1,13 +1,13 @@
 <div align="center">
 
-<a href="https://satiricalguru.github.io/"><img src="https://capsule-render.vercel.app/api?type=waving&color=0:060505,55:5c0710,100:c41226&height=230&section=header&text=Higanbana&fontSize=72&fontColor=ede7df&fontAlignY=38&desc=The%20portfolio%20of%20Jatin%20Pandey%20%C2%B7%20%E5%BD%BC%E5%B2%B8%E8%8A%B1&descSize=18&descAlignY=60&animation=fadeIn" width="100%" alt="Higanbana — portfolio of Jatin Pandey"></a>
+<a href="https://satiricalguru.vercel.app/"><img src="https://capsule-render.vercel.app/api?type=waving&color=0:060505,55:5c0710,100:c41226&height=230&section=header&text=Higanbana&fontSize=72&fontColor=ede7df&fontAlignY=38&desc=The%20portfolio%20of%20Jatin%20Pandey%20%C2%B7%20%E5%BD%BC%E5%B2%B8%E8%8A%B1&descSize=18&descAlignY=60&animation=fadeIn" width="100%" alt="Higanbana — portfolio of Jatin Pandey"></a>
 
-<a href="https://satiricalguru.github.io/"><img src="https://readme-typing-svg.demolab.com?font=Shippori+Mincho&weight=500&size=22&duration=2800&pause=900&color=E01B34&center=true&vCenter=true&width=760&lines=1000+%E2%88%92+7+%3D+993...;Spider+lilies+that+bloom+white%2C+then+bleed+red.;Drawn+in+code+%E2%80%94+zero+images.;Building+things%2C+breaking+things." alt="Typing intro"></a>
+<a href="https://satiricalguru.vercel.app/"><img src="https://readme-typing-svg.demolab.com?font=Shippori+Mincho&weight=500&size=22&duration=2800&pause=900&color=E01B34&center=true&vCenter=true&width=760&lines=1000+%E2%88%92+7+%3D+993...;Spider+lilies+that+bloom+white%2C+then+bleed+red.;Drawn+in+code+%E2%80%94+zero+images.;Building+things%2C+breaking+things." alt="Typing intro"></a>
 
 <p>
-  <a href="https://satiricalguru.github.io/"><img src="https://img.shields.io/badge/Live-satiricalguru.github.io-c41226?style=for-the-badge&logo=githubpages&logoColor=white&labelColor=060505" alt="Live on GitHub Pages"></a>
-  <a href="https://satiricalguru.vercel.app/"><img src="https://img.shields.io/badge/Mirror-Vercel-ede7df?style=for-the-badge&logo=vercel&logoColor=060505&labelColor=060505" alt="Vercel mirror"></a>
-  <a href="https://github.com/satiricalguru/satiricalguru.github.io/actions"><img src="https://img.shields.io/github/actions/workflow/status/satiricalguru/satiricalguru.github.io/deploy.yml?branch=main&style=for-the-badge&label=deploy&labelColor=060505&color=5c0710" alt="Deploy status"></a>
+  <a href="https://satiricalguru.vercel.app/"><img src="https://img.shields.io/badge/Live-satiricalguru.vercel.app-c41226?style=for-the-badge&logo=vercel&logoColor=white&labelColor=060505" alt="Live site"></a>
+  <a href="https://satiricalguru.github.io/Japanese-style-portfolio/"><img src="https://img.shields.io/badge/Mirror-GitHub_Pages-ede7df?style=for-the-badge&logo=githubpages&logoColor=060505&labelColor=060505" alt="GitHub Pages mirror"></a>
+  <a href="https://github.com/satiricalguru/Japanese-style-portfolio/actions"><img src="https://img.shields.io/github/actions/workflow/status/satiricalguru/Japanese-style-portfolio/deploy.yml?branch=main&style=for-the-badge&label=deploy&labelColor=060505&color=5c0710" alt="Deploy status"></a>
 </p>
 <p>
   <img src="https://img.shields.io/badge/React_19-060505?style=flat-square&logo=react&logoColor=e01b34">
@@ -18,9 +18,9 @@
   <img src="https://img.shields.io/badge/94_KB_gzip-060505?style=flat-square">
 </p>
 
-<a href="https://satiricalguru.github.io/"><img src="docs/media/intro.gif" width="100%" alt="The 1000 − 7 loader lifts and a field of spider lilies blooms and turns red"></a>
+<a href="https://satiricalguru.vercel.app/"><img src="docs/media/intro.gif" width="100%" alt="The 1000 − 7 loader lifts and a field of spider lilies blooms and turns red"></a>
 
-<sub>▶ <a href="docs/media/intro.mp4">Watch the full-quality recording (MP4)</a> · or better, <a href="https://satiricalguru.github.io/">open the live site</a>, move your cursor through the field and click.</sub>
+<sub>▶ <a href="docs/media/intro.mp4">Watch the full-quality recording (MP4)</a> · or better, <a href="https://satiricalguru.vercel.app/">open the live site</a>, move your cursor through the field and click.</sub>
 
 </div>
 
@@ -83,8 +83,8 @@ docs/media/              # README screenshots + recording
 ## 🚀 Run it
 
 ```bash
-git clone https://github.com/satiricalguru/satiricalguru.github.io.git
-cd satiricalguru.github.io
+git clone https://github.com/satiricalguru/Japanese-style-portfolio.git
+cd Japanese-style-portfolio
 npm install
 npm run dev        # http://localhost:5173
 npm run build      # refreshes GitHub data → type-checks → bundles to dist/
@@ -94,8 +94,8 @@ npm run build      # refreshes GitHub data → type-checks → bundles to dist/
 
 ## 🌐 Deploy
 
-- **GitHub Pages:** every push to `main` runs `.github/workflows/deploy.yml`.
-- **Vercel:** a mirror at [satiricalguru.vercel.app](https://satiricalguru.vercel.app).
+- **Vercel (primary):** [satiricalguru.vercel.app](https://satiricalguru.vercel.app)
+- **GitHub Pages:** every push to `main` runs `.github/workflows/deploy.yml` and publishes to [satiricalguru.github.io/Japanese-style-portfolio](https://satiricalguru.github.io/Japanese-style-portfolio/). The build uses that sub-path when `GITHUB_PAGES` is set.
 
 <div align="center">
 

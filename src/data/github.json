@@ -383,7 +383,7 @@
     "forks": 0,
     "url": "https://github.com/satiricalguru/satiricalguru",
     "homepage": "",
-    "updatedAt": "2026-09-27T13:58:24Z",
+    "updatedAt": "2026-10-03T09:55:12Z",
     "isFork": false
   },
   {
@@ -927,6 +927,18 @@
     "isFork": true
   },
   {
+    "name": "satiricalguru.github.io",
+    "description": "Personal creative developer portfolio for Jatin Pandey (satiricalguru)",
+    "language": "TypeScript",
+    "topics": [],
+    "stars": 0,
+    "forks": 0,
+    "url": "https://github.com/satiricalguru/satiricalguru.github.io",
+    "homepage": "https://old-gray.vercel.app",
+    "updatedAt": "2026-10-03T10:00:03Z",
+    "isFork": false
+  },
+  {
     "name": "Nexus-Web-Page",
     "description": "🌌 Interactive 3D web portal for Nexus — Research, Space & Technology Club at Manipal University Jaipur",
     "language": "CSS",
@@ -947,18 +959,6 @@
     "url": "https://github.com/satiricalguru/Nexus-Web-Page",
     "homepage": "https://nexus-web-page.vercel.app",
     "updatedAt": "2026-10-03T06:56:07Z",
-    "isFork": false
-  },
-  {
-    "name": "satiricalguru.github.io",
-    "description": "Personal creative developer portfolio for Jatin Pandey (satiricalguru)",
-    "language": "TypeScript",
-    "topics": [],
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/satiricalguru/satiricalguru.github.io",
-    "homepage": "",
-    "updatedAt": "2026-09-28T04:48:30Z",
     "isFork": false
   },
   {

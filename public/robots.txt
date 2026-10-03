@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://satiricalguru.github.io/sitemap.xml
+Sitemap: https://satiricalguru.vercel.app/sitemap.xml
