@@ -368,7 +368,7 @@
   {
     "name": "satiricalguru",
     "description": "Special repository for Jatin's GitHub profile README",
-    "language": "Code",
+    "language": "Python",
     "topics": [
       "achievements",
       "config",
@@ -383,7 +383,7 @@
     "forks": 0,
     "url": "https://github.com/satiricalguru/satiricalguru",
     "homepage": "",
-    "updatedAt": "2026-10-03T10:03:46Z",
+    "updatedAt": "2026-10-04T09:53:48Z",
     "isFork": false
   },
   {
@@ -845,6 +845,26 @@
     "isFork": false
   },
   {
+    "name": "Japanese-style-portfolio",
+    "description": "🌸 Higanbana — a Tokyo Ghoul–inspired portfolio: procedural spider lilies that bloom white, then bleed red.",
+    "language": "TypeScript",
+    "topics": [
+      "anime",
+      "canvas",
+      "creative-coding",
+      "portfolio",
+      "react",
+      "typescript",
+      "vite"
+    ],
+    "stars": 1,
+    "forks": 0,
+    "url": "https://github.com/satiricalguru/Japanese-style-portfolio",
+    "homepage": "https://satiricalguru.github.io/Japanese-style-portfolio/",
+    "updatedAt": "2026-10-03T10:16:12Z",
+    "isFork": false
+  },
+  {
     "name": "Podium",
     "description": "🎙️ Interactive 3D auditorium and AI-assisted public speaking rehearsal studio",
     "language": "TypeScript",
@@ -925,26 +945,6 @@
     "homepage": "https://pewdiepie-archdaemon.github.io/odysseus/",
     "updatedAt": "2026-08-29T16:50:50Z",
     "isFork": true
-  },
-  {
-    "name": "Japanese-style-portfolio",
-    "description": "🌸 Higanbana — a Tokyo Ghoul–inspired portfolio: procedural spider lilies that bloom white, then bleed red.",
-    "language": "TypeScript",
-    "topics": [
-      "anime",
-      "canvas",
-      "creative-coding",
-      "portfolio",
-      "react",
-      "typescript",
-      "vite"
-    ],
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/satiricalguru/Japanese-style-portfolio",
-    "homepage": "https://satiricalguru.github.io/Japanese-style-portfolio/",
-    "updatedAt": "2026-10-03T10:10:56Z",
-    "isFork": false
   },
   {
     "name": "Nexus-Web-Page",

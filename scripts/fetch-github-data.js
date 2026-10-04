@@ -64,6 +64,20 @@ async function fetchGitHubData() {
         };
         fs.writeFileSync(profilePath, JSON.stringify(profile, null, 2), 'utf-8');
         console.log('[GitHub Telemetry] Updated src/data/github-profile.json');
+
+        if (user.avatar_url) {
+          try {
+            const avatarRes = await fetch(user.avatar_url);
+            if (avatarRes.ok) {
+              const buffer = Buffer.from(await avatarRes.arrayBuffer());
+              const avatarDest = path.resolve(__dirname, '../public/avatar.jpg');
+              fs.writeFileSync(avatarDest, buffer);
+              console.log('[GitHub Telemetry] Updated public/avatar.jpg from GitHub profile');
+            }
+          } catch (avatarErr) {
+            console.warn(`[GitHub Telemetry] Avatar fetch skipped: ${avatarErr.message}`);
+          }
+        }
       }
     } catch (profileErr) {
       console.warn(`[GitHub Telemetry] Profile fetch skipped: ${profileErr.message}`);
